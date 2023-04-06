@@ -21,8 +21,8 @@ class ClientFactory extends Factory
         return [
             //
 
-            'firstname' => $this->faker->firstname , 
-            'lastname' => $this->faker->lastname ,
+            'nom' => $this->faker->lastname , 
+            'prenom' => $this->faker->firstname ,
             'CIN' => implode('', $letters) . str_pad($digits, 6, '0', STR_PAD_LEFT),
             'email' => $this->faker->unique()->safeEmail , 
             'phone' => $this->faker->unique()->phoneNumber , 
