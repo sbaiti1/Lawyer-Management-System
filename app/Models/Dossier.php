@@ -12,4 +12,8 @@ class Dossier extends Model
     protected $fillable = [
         'code' , 'client_id'
     ] ;
+
+    public function user(){
+        return $this->belongsTo(User::class) ;
+    }
 }
