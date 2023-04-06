@@ -16,4 +16,8 @@ class Client extends Model
         'email' ,
         'phone'
     ] ;
+
+    public function dossiers(){
+        return $this->hasMany(Dossier::class);
+    }
 }
