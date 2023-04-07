@@ -37,6 +37,12 @@ class ClientController extends Controller
     public function show(Client $client)
     {
         //
+        $data = Client::find($client->id) ;
+        $dossiers = $client->dossiers ;
+        //return response()->json($dossiers) ;
+        return $data ; 
+
+
     }
 
     /**
