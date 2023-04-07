@@ -37,6 +37,8 @@ class DossierController extends Controller
     public function show(Dossier $dossier)
     {
         //
+        $data = Dossier::find($dossier->id) ;
+        return $data ;
     }
 
     /**
