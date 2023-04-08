@@ -38,6 +38,6 @@ Route::middleware('auth')->group(function () {
 Route::resource('/clients' , 'App\Http\Controllers\ClientController');
 Route::resource('/dossiers' , 'App\Http\Controllers\DossierController');
 Route::get('/test' , function(){
-    return Inertia::render('Test') ;
+    return Inertia::render('Home') ;
 }) ;
 require __DIR__.'/auth.php';

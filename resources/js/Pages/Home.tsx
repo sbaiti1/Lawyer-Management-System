@@ -21,7 +21,7 @@ const CustomCalendar = () => {
 
 
 
-const Test: React.FC = () => {
+const Home: React.FC = () => {
   return (
     <div dir="rtl" className="h-screen flex  bg-slate-100">
       <div className="w-fit flex-shrink-0">
@@ -36,5 +36,5 @@ const Test: React.FC = () => {
 );
 };
 
-export default Test;
+export default Home;
 
