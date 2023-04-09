@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class ClientController extends Controller
 {
@@ -13,6 +14,7 @@ class ClientController extends Controller
     public function index()
     {
         //
+        return Client::All();
     }
 
     /**
@@ -21,6 +23,7 @@ class ClientController extends Controller
     public function create()
     {
         //
+        
     }
 
     /**
@@ -51,6 +54,7 @@ class ClientController extends Controller
     public function edit(Client $client)
     {
         //
+        return Inertia::render('Client/Edit' , ["name" => $client->nom]) ;
     }
 
     /**
