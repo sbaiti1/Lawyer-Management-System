@@ -14,7 +14,8 @@ class ClientController extends Controller
     public function index()
     {
         //
-        return Client::All();
+        $data = Client::All();
+        return Inertia::render('Client/Index' , ['data'=>$data]) ;
     }
 
     /**
@@ -40,7 +41,8 @@ class ClientController extends Controller
         $c->phone = $request->phone ; 
         $c->email = $request->email ;
         $c->save(); 
-        return response($c->nom . " added to databse"); 
+        //return response($c->nom . " added to databse"); 
+        return redirect('/home') ;
 
     }
 
@@ -57,11 +59,7 @@ class ClientController extends Controller
 
 
     }
-     public function latestClients(){
-        $latest = Client::latest()->take(6)->get();
-        //return response($latest);
-        return Inertia::render('Home' , ['data' =>$latest]) ;
-     }
+     
     /**
      * Show the form for editing the specified resource.
      */
@@ -77,6 +75,14 @@ class ClientController extends Controller
     public function update(Request $request, Client $client)
     {
         //
+        $c = Client::find($client->id) ;
+        $c->nom = $request->nom ; 
+        $c->prenom = $request->prenom ; 
+        $c->CIN = $request->CIN ; 
+        $c->phone = $request->phone ; 
+        $c->email = $request->email ;
+        $c->save(); 
+        return redirect('/home') ;
     }
 
     /**
