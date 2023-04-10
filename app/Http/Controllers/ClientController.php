@@ -23,6 +23,7 @@ class ClientController extends Controller
     public function create()
     {
         //
+        return Inertia::render('Client/Create') ;
         
     }
 
@@ -32,6 +33,15 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         //
+        $c = new Client() ;
+        $c->nom = $request->nom ; 
+        $c->prenom = $request->prenom ; 
+        $c->CIN = $request->CIN ; 
+        $c->phone = $request->phone ; 
+        $c->email = $request->email ;
+        $c->save(); 
+        return response($c->nom . " added to databse"); 
+
     }
 
     /**
@@ -47,14 +57,18 @@ class ClientController extends Controller
 
 
     }
-
+     public function latestClients(){
+        $latest = Client::latest()->take(6)->get();
+        //return response($latest);
+        return Inertia::render('Home' , ['data' =>$latest]) ;
+     }
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(Client $client)
     {
         //
-        return Inertia::render('Client/Edit' , ["name" => $client->nom]) ;
+        return Inertia::render('Client/Edit' , ["data" => $client]) ;
     }
 
     /**
