@@ -1,27 +1,12 @@
-/*import React from "react";
-import { PageProps } from '@/types';
-
-interface EditProps extends PageProps {
-  name: string;
-}
-
-const Edit: React.FC<EditProps> = (props: EditProps) => {
-  return (
-    <div dir="rtl" className="h-screen flex ">
-        {props.name}
-    </div>
-  );
-};
-
-export default Edit;*/
-
 
 import React, { useState } from 'react';
 import { PageProps } from '@/types';
+import { Head, Link, useForm } from '@inertiajs/react';
 
 interface FormValues {
   nom: string;
-  lastname: string;
+  prenom: string;
+  CIN: string;
   email: string;
   phone: string;
 }
@@ -33,30 +18,32 @@ interface EditProps extends PageProps {
 const Edit: React.FC<EditProps> = (props: EditProps) => {
   console.log(props.data);
   
-  const [formValues, setFormValues] = useState<FormValues>({
-    nom: props.data.nom,
-    lastname: '',
-    email: '',
-    phone : '' ,
+  const { data, setData, patch, processing, errors, reset } = useForm({    nom: props.data.nom,
+    prenom:  props.data.prenom,
+    CIN: props.data.CIN,
+    email: props.data.email,
+    phone :  props.data.phone ,
   });
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     // Handle form submission here
+    patch(route('clients.update', data));
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFormValues({
-      ...formValues,
+    setData({
+      ...data,
       [event.target.name]: event.target.value,
     });
+
   };
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          إنشاء حساب جديد
+        تعديل حساب 
         </h2>
       </div>
 
@@ -72,12 +59,12 @@ const Edit: React.FC<EditProps> = (props: EditProps) => {
               <div className="mt-1">
                 <input
                   id="name"
-                  name="name"
+                  name="nom"
                   type="text"
                   autoComplete="name"
                   required
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm"
-                  value={formValues.nom}
+                  value={data.nom}
                   onChange={handleChange}
                 />
               </div>
@@ -89,12 +76,12 @@ const Edit: React.FC<EditProps> = (props: EditProps) => {
               <div className="mt-1">
                 <input
                   id="name"
-                  name="name"
+                  name="prenom"
                   type="text"
                   autoComplete="name"
                   required
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm"
-                  value={formValues.lastname}
+                  value={data.prenom}
                   onChange={handleChange}
                 />
               </div>
@@ -107,12 +94,12 @@ const Edit: React.FC<EditProps> = (props: EditProps) => {
               <div className="mt-1">
                 <input
                   id="name"
-                  name="name"
+                  name="phone"
                   type="text"
                   autoComplete="name"
                   required
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm"
-                  value={formValues.phone}
+                  value={data.phone}
                   onChange={handleChange}
                 />
               </div>
@@ -130,7 +117,7 @@ const Edit: React.FC<EditProps> = (props: EditProps) => {
                   autoComplete="email"
                   required
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm"
-                  value={formValues.email}
+                  value={data.email}
                   onChange={handleChange}
                 />
               </div>
@@ -143,23 +130,8 @@ const Edit: React.FC<EditProps> = (props: EditProps) => {
                 className="group relative w-full flex justify-center py
                 -2 px-4 border border-transparent text-lg font-medium rounded-md text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500"
                 >
-                <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-                <svg
-                                 className="h-5 w-5 text-emerald-300 group-hover:text-emerald-200"
-                                 xmlns="http://www.w3.org/2000/svg"
-                                 viewBox="0 0 20 20"
-                                 fill="currentColor"
-                                 aria-hidden="true"
-                               >
-                <path
-                                   fillRule="evenodd"
-                                   d="M15.707 5.293a1 1 0 00-1.414-1.414L9 9.586 5.707 6.293A1 1 0 104.293 7.707l4 4a1 1 0 001.414 0l6-6z"
-                                   clipRule="evenodd"
-                                 />
-                </svg>
-                </span>
-إنشاء حساب
-</button>
+                
+تعديل</button>
 </div>
 </form>
 </div>
