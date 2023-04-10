@@ -28,16 +28,16 @@ const Table : React.FC<TableProps> = ({data}) => {
           <tr className="bg-gray-200 text-gray-700">
             <th className="px-4 py-2 text-center">#</th>
             <th className="px-4 py-2 text-center">الاسم</th>
-            <th className="px-4 py-2 text-center">العمر</th>
-            <th className="px-4 py-2 text-center">المدينة</th>
+            <th className="px-4 py-2 text-center">CIN</th>
+            <th className="px-4 py-2 text-center">رقم الهاتف</th>
           </tr>
         </thead>
         <tbody>
           {data.map((item) => (
             <tr key={item.id} className="border-b bg-gray-100">
               <td className="px-4 py-2 text-center">{item.id}</td>
-              <td className="px-4 py-2 text-center">{item.nom}</td>
-              <td className="px-4 py-2 text-center">{item.prenom}</td>
+              <td className="px-4 py-2 text-center">{item.nom} {item.prenom}</td>
+              <td className="px-4 py-2 text-center">{item.CIN}</td>
               <td className="px-4 py-2 text-center">{item.phone}</td>
             </tr>
           ))}
