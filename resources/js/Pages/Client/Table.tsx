@@ -1,12 +1,28 @@
-import React from 'react';
 import { PageProps } from '@/types';
 
-/*const data = [
-  { id: 1, name: 'علي', age: 25, city: 'جدة' },
-  { id: 2, name: 'محمد', age: 30, city: 'الرياض' },
-  { id: 3, name: 'فاطمة', age: 27, city: 'الدمام' },
-  { id: 4, name: 'نورة', age: 22, city: 'مكة المكرمة' },
-];*/
+import * as React from 'react';
+import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+
+const columns: GridColDef[] = [
+  { field: 'id', headerName: '#', width: 70 },
+  { field: 'nom', headerName: 'الاسم', width: 130 },
+  { field: 'prenom', headerName: ' النسب', width: 130 },
+  {
+    field: 'CIN',
+    headerName: 'CIN',
+    type: 'number',
+    width: 120,
+  },
+  {
+    field: 'phone',
+    headerName: 'الهاتف',
+    type: 'number',
+    width: 200,
+  },
+  { field: 'email', headerName: ' البريد الإلكتروني', width: 250 },
+
+  
+];
 
 
 interface TableProps {
@@ -21,29 +37,15 @@ interface TableProps {
 }
 
 const Table : React.FC<TableProps> = ({data}) => {
+  const rows = data ;
   return (
-    <div className="w-full overflow-x-auto">
-      <table className="w-full table-auto">
-        <thead>
-          <tr className="bg-gray-200 text-gray-700">
-            <th className="px-4 py-2 text-center">#</th>
-            <th className="px-4 py-2 text-center">الاسم</th>
-            <th className="px-4 py-2 text-center">CIN</th>
-            <th className="px-4 py-2 text-center">رقم الهاتف</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((item) => (
-            <tr key={item.id} className="border-b bg-gray-100">
-              <td className="px-4 py-2 text-center">{item.id}</td>
-              <td className="px-4 py-2 text-center">{item.nom} {item.prenom}</td>
-              <td className="px-4 py-2 text-center">{item.CIN}</td>
-              <td className="px-4 py-2 text-center">{item.phone}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <div style={{ height: 400, width: '100%' }}>
+    <DataGrid
+      rows={rows}
+      columns={columns}
+      checkboxSelection
+    />
+  </div>
   );
 };
 
