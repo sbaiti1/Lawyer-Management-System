@@ -29,16 +29,14 @@ const Home: React.FC<TableProps> = ( props : TableProps ) => {
   
   return (
     <div dir="rtl" className="h-screen flex  bg-slate-100">
-      <div className="w-fit flex-shrink-0">
-        <Sidebar />
-      </div>
+      
       <div className="w-full">
         <Navbar />
         
         <div className="w-11/12 mt-5 mx-auto">
 
         <div className="py-8 flex justify-between">
-  <h1 className="text-xl font-bold">Your Heading Here</h1>
+  <h1 className="text-xl font-bold">لائحة الموكلين</h1>
   <button className="bg-blue-500 text-white px-4 py-2 rounded"><span><AddIcon/></span> إضافة </button>
 </div>
         <Table data={props.data} />

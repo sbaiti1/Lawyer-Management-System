@@ -27,9 +27,9 @@ interface TableProps extends PageProps {
 const Home: React.FC<TableProps> = ( props : TableProps ) => {
   return (
     <div dir="rtl" className="h-screen flex  bg-slate-100">
-      <div className="w-fit flex-shrink-0">
+      {/* <div className="w-fit flex-shrink-0">
         <Sidebar />
-      </div>
+      </div> */}
       <div className="w-full">
         <Navbar />
         <div className="p-4">
