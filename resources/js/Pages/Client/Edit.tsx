@@ -4,6 +4,7 @@ import { PageProps } from '@/types';
 import { Head, Link, useForm } from '@inertiajs/react';
 
 interface FormValues {
+  id : number ;
   nom: string;
   prenom: string;
   CIN: string;
@@ -18,7 +19,9 @@ interface EditProps extends PageProps {
 const Edit: React.FC<EditProps> = (props: EditProps) => {
   console.log(props.data);
   
-  const { data, setData, patch, processing, errors, reset } = useForm({    nom: props.data.nom,
+  const { data, setData, patch, processing, errors, reset } = useForm({
+    id : props.data.id ,
+    nom: props.data.nom,
     prenom:  props.data.prenom,
     CIN: props.data.CIN,
     email: props.data.email,
@@ -28,8 +31,7 @@ const Edit: React.FC<EditProps> = (props: EditProps) => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     // Handle form submission here
-    patch(route('clients.update', data));
-  };
+    patch(route('clients.update', { client: data.id }));  };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setData({
