@@ -25,11 +25,14 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "@date-io/date-fns": "^2.16.0",
         "@emotion/react": "^11.10.6",
         "@emotion/styled": "^11.10.6",
         "@mui/icons-material": "^5.11.16",
         "@mui/material": "^5.11.16",
         "@mui/styled-engine": "^5.11.16",
+        "datejs": "^1.0.0-rc3",
+        "dayjs": "^1.11.7",
         "react-calendar": "^4.2.1"
     }
 }
