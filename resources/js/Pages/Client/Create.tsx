@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Head, Link, useForm } from '@inertiajs/react';
 import { useEffect, FormEventHandler } from 'react';
+
+import Layout from '@/Layouts/Layout';
 interface FormValues {
   nom: string;
   prenom: string;
@@ -41,9 +43,11 @@ const Create: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <Layout>
+      <div className=" flex flex-col w-full justify-center sm:px-6 lg:px-8">
+
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+        <h2 className="py-4 text-center text-3xl font-extrabold text-gray-900">
         إضافة موكل جديد
         </h2>
       </div>
@@ -157,6 +161,7 @@ const Create: React.FC = () => {
 </div>
 </div>
 </div>
+</Layout>
 );
 };
 

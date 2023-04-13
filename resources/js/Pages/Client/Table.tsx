@@ -6,7 +6,7 @@ import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 const columns: GridColDef[] = [
   { field: 'id', headerName: '#', width: 70 },
   { field: 'nom', headerName: 'الاسم', width: 130 },
-  { field: 'prenom', headerName: ' النسب', width: 130 },
+  { field: 'prenom', headerName: ' النسب', width: 130  },
   {
     field: 'CIN',
     headerName: 'CIN',
@@ -39,8 +39,8 @@ interface TableProps {
 const Table : React.FC<TableProps> = ({data}) => {
   const rows = data ;
   return (
-    <div style={{ height: 400, width: '100%' }}>
-    <DataGrid
+    <div style={{ height: 400, width: '100%' , background : 'white' }}>
+    <DataGrid 
       rows={rows}
       columns={columns}
       checkboxSelection

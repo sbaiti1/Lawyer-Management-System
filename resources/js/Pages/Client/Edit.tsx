@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { PageProps } from '@/types';
 import { Head, Link, useForm } from '@inertiajs/react';
 import Navbar from '@/Components/Navbar';
+import Layout from '@/Layouts/Layout';
 
 interface FormValues {
   id : number ;
@@ -43,9 +44,8 @@ const Edit: React.FC<EditProps> = (props: EditProps) => {
   };
 
   return (
-    <div className='min-h-screen bg-gray-50'>
-    <Navbar />
-    <div className=" flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <Layout>
+      <div className=" flex flex-col w-full justify-center sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
         تعديل حساب 
@@ -142,7 +142,8 @@ const Edit: React.FC<EditProps> = (props: EditProps) => {
 </div>
 </div>
 </div>
-</div>
+</Layout>
+
 );
 };
 

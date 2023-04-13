@@ -8,7 +8,7 @@ import Sidebar from "@/Components/Sidebar";
 import Table from "./Table";
 import AddIcon from '@mui/icons-material/Add';
 import { PageProps } from '@/types';
-
+import Layout from "@/Layouts/Layout";
 
 interface TableProps extends PageProps {
   
@@ -28,10 +28,8 @@ interface TableProps extends PageProps {
 const Home: React.FC<TableProps> = ( props : TableProps ) => {
   
   return (
-    <div dir="rtl" className="h-screen flex  bg-slate-100">
-      
-      <div className="w-full">
-        <Navbar />
+    
+        <Layout>
         
         <div className="w-11/12 mt-5 mx-auto">
 
@@ -41,9 +39,7 @@ const Home: React.FC<TableProps> = ( props : TableProps ) => {
 </div>
         <Table data={props.data} />
           </div> 
-</div>
-
-        </div>
+</Layout>
 
 );
 };
