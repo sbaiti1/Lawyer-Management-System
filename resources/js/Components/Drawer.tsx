@@ -8,9 +8,14 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import { ListItemAvatar } from '@mui/material';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
+import HomeIcon from '@mui/icons-material/Home';
+import FolderCopyIcon from '@mui/icons-material/FolderCopy';
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
@@ -44,8 +49,8 @@ export default function Drawer() {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+      {/* <List>
+        {['Home', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
@@ -55,20 +60,45 @@ export default function Drawer() {
             </ListItemButton>
           </ListItem>
         ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
+      </List> */}
+      <List >
+      <ListItem className='mt-5 py-2' key={"الصفحة الرئيسية"} disablePadding>
+  <ListItemButton>
+      <HomeIcon style={{ color: "#34d399" }} />
+    <ListItemText style={{ color: "#334155" }} primary={"الصفحة الرئيسية"} />
+  </ListItemButton>
+</ListItem>
+
+
+         <ListItem className=' py-2' key={"الصفحة الرئيسية"} disablePadding>
+         <ListItemButton>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  <PeopleAltIcon style={{color : "#34d399"}}/>
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText style={{ color: "#334155" }} primary={" الموكلين"} />
             </ListItemButton>
-          </ListItem>
-        ))}
+         </ListItem>
+
+         <ListItem className=' py-2' key={"الصفحة الرئيسية"} disablePadding>
+         <ListItemButton>
+              <ListItemIcon>
+                  <FolderCopyIcon style={{color : "#34d399"}}/>
+              </ListItemIcon>
+              <ListItemText style={{ color: "#334155" }} primary={" الملفات"} />
+            </ListItemButton>
+         </ListItem>
+
+         <ListItem className=' py-2' key={" تقويم"} disablePadding>
+         <ListItemButton>
+              <ListItemIcon>
+                  <CalendarMonthIcon  style={{color : "#34d399"}} />
+              </ListItemIcon>
+              <ListItemText style={{ color: "#334155" }} primary={" تقويم"} />
+            </ListItemButton>
+         </ListItem>
+
       </List>
+      
     </Box>
   );
 
