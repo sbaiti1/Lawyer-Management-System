@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Dossier;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class DossierController extends Controller
 {
@@ -13,6 +14,8 @@ class DossierController extends Controller
     public function index()
     {
         //
+        $data = Dossier::All() ;
+        return $data ;
     }
 
     /**
@@ -21,6 +24,7 @@ class DossierController extends Controller
     public function create()
     {
         //
+        return Inertia::render('Dossier/Create') ;
     }
 
     /**
@@ -38,7 +42,8 @@ class DossierController extends Controller
     {
         //
         $data = Dossier::find($dossier->id) ;
-        return $data ;
+        $p = $data->client ;
+        return $data ."client : " . $p ;
     }
 
     /**

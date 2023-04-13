@@ -56,7 +56,7 @@ class ClientController extends Controller
         $dossiers = $client->dossiers ;
         //return response()->json($dossiers) ;
         //return $data ; 
-        return Inertia::render('Client/Show' , ["data" =>$data]) ;
+        return Inertia::render('Client/Show' , ["data" =>$data , "dossiers" =>$dossiers]) ;
 
 
     }
