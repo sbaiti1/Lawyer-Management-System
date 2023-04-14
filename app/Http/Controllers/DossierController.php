@@ -27,9 +27,9 @@ class DossierController extends Controller
     {
         //
         $clientId = $request->input('client_id');
-        $data = Client::find($clientId);
+        $client = Client::find($clientId);
         //echo($data);
-        return Inertia::render('Dossier/Create') ;
+        return Inertia::render('Dossier/Create' , ['client' =>$client]) ;
 
     }
 
@@ -39,6 +39,13 @@ class DossierController extends Controller
     public function store(Request $request)
     {
         //
+        $d = new Dossier() ;
+        $d->code = $request->code ; 
+        $d->description = $request->description ; 
+        $d->client_id = $request->client_id ; 
+        $d->save(); 
+        //return response($c->nom . " added to databse"); 
+        return redirect('/clients/' .$d->client_id) ;
     }
 
     /**
