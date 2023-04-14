@@ -10,8 +10,7 @@ import { PageProps } from '@/types';
 import FolderCopyIcon from '@mui/icons-material/FolderCopy';
 import PeopleIcon from '@mui/icons-material/People';
 import GavelIcon from '@mui/icons-material/Gavel';
-/*import dayjs from 'dayjs';
-import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';*/
+import Layout from "@/Layouts/Layout";
 interface TableProps extends PageProps {
   total : number
   totalD : number
@@ -32,12 +31,9 @@ const Home: React.FC<TableProps> = ( props : TableProps ) => {
   console.log('hi');
   
   return (
-    <div dir="rtl" className="h-screen bg-slate-50">
-     
-        <Navbar />
-        <div className="p-4 flex  py-8">
-        <div className="w-2/3">
-            <div className="cards">
+    <Layout>
+    
+            <div className="cards w-2/3">
             <div className="flex flex-wrap gap-8 items-stretch">
             <div className="w-full h-fit md:w-1/2 lg:w-1/4 mb-4 mx-2">
               <div className="flex flex-col bg-white rounded-md h-full shadow-md cursor-pointer hover:scale-105 transform transition duration-300">
@@ -67,11 +63,10 @@ const Home: React.FC<TableProps> = ( props : TableProps ) => {
         </div>
                   </div>
  
-        </div>
           <div className="flex flex-col">
           </div>
-        </div>
-  </div>
+  
+          </Layout>
 );
 };
 

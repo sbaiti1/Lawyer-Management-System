@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dossier;
+use App\Models\Client;
+
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -21,10 +23,14 @@ class DossierController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
         //
+        $clientId = $request->input('client_id');
+        $data = Client::find($clientId);
+        //echo($data);
         return Inertia::render('Dossier/Create') ;
+
     }
 
     /**

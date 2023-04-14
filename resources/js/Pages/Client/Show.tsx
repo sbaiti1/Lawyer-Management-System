@@ -11,7 +11,6 @@ import AddIcon from '@mui/icons-material/Add';
 import FolderIcon from '@mui/icons-material/Folder';
 import { Divider } from '@mui/material';
 import Layout from '@/Layouts/Layout';
-
 interface FormValues {
   id : number ;
   nom: string;
@@ -66,7 +65,7 @@ const Show : React.FC<ShowProps> = (props : ShowProps) => {
                                   type="text"
                                   placeholder="بحث"
                                 /></div>
-                                <div className="flex-shrink-0">   <button className="bg-emerald-500 text-white px-4 py-2 rounded"><span><AddIcon/></span> إضافة </button>
+                                <div className="flex-shrink-0">   <Link href={`/dossiers/create?client_id=${props.data.id}`} className="bg-emerald-500 text-white px-4 py-2 rounded"><span><AddIcon/></span> إضافة </Link>
  </div>
                             </div>
 
