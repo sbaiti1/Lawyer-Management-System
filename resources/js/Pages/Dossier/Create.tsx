@@ -2,13 +2,10 @@ import React, { useState } from 'react';
 import { Head, Link, useForm } from '@inertiajs/react';
 import { useEffect, FormEventHandler } from 'react';
 import Navbar from '@/Components/Navbar';
-import InputLabel from '@mui/material/InputLabel';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
 import Divider from '@mui/material/Divider';
 import Chip from '@mui/material/Chip';
 import { PageProps } from '@/types';
-
+import Layout from '@/Layouts/Layout';
 interface FormValues {
   id : number ;
   nom: string;
@@ -49,9 +46,9 @@ const Create: React.FC<CreateProps> = (props:CreateProps) => {
   
 
   return (
-    <div className='bg-gray-50'>
-         <Navbar />
-    <div className="mt-6 flex flex-col justify-center sm:px-6 lg:px-8">
+    <Layout>
+         
+    <div className="flex flex-col w-full justify-center sm:px-6 lg:px-8">
                
 
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -168,7 +165,7 @@ const Create: React.FC<CreateProps> = (props:CreateProps) => {
 </div>
 </div>
 </div>
-</div>
+</Layout>
 );
 };
 

@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useState } from "react";
 import "react-calendar/dist/Calendar.css";
 import Table from "./Table";
 import AddIcon from '@mui/icons-material/Add';
@@ -22,7 +22,10 @@ interface TableProps extends PageProps {
 
 
 const Home: React.FC<TableProps> = ( props : TableProps ) => {
-  
+  const [searchQuery, setSearchQuery] = useState("");  
+  const filteredClients = props.data.filter((item) => item.nom.toLowerCase().includes(searchQuery.toLowerCase()));
+  const output = filteredClients ? filteredClients : props.data
+
   return (
     
         <Layout>
@@ -37,12 +40,14 @@ const Home: React.FC<TableProps> = ( props : TableProps ) => {
                                 <div className="flex-shrink-0"><input
                                   className="block w-full bg-slate-50 px-2 py-1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                   type="text"
+                                  value={searchQuery}
+                                  onChange={(e) => setSearchQuery(e.target.value)}
                                   placeholder="بحث"
                                 /></div>
                                 <div className="flex-shrink-0">   <Link href="/clients/create" className="bg-emerald-500 text-white px-4 py-2 rounded"><span><AddIcon/></span> إضافة </Link>
  </div>
                             </div>
-        <Table data={props.data} />
+        <Table data={output} />
           </div> 
 </Layout>
 
