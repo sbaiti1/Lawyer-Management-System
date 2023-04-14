@@ -13,6 +13,21 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
+import Timeline from '@mui/lab/Timeline';
+import TimelineItem from '@mui/lab/TimelineItem';
+import TimelineSeparator from '@mui/lab/TimelineSeparator';
+import TimelineConnector from '@mui/lab/TimelineConnector';
+import TimelineContent from '@mui/lab/TimelineContent';
+import TimelineDot from '@mui/lab/TimelineDot';
+import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
+
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+
 interface FormValues {
   id : number ;
   nom: string;
@@ -98,11 +113,69 @@ const Show : React.FC<ShowProps> = (props : ShowProps) => {
                                           <Typography sx={{padding : '0 12px' , color : '#334155'}}> {x.code} </Typography>
                                           </Typography>
                                         </AccordionSummary>
-                                        <AccordionDetails>
-                                          <Typography>
-                                            Nulla facilisi. Phasellus sollicitudin nulla et quam mattis feugiat.
-                                            Aliquam eget maximus est, id dignissim quam.
-                                          </Typography>
+                                        <AccordionDetails sx={{display : 'flex' , justifyContent : 'space-between'}}>
+                                        <Timeline sx={{maxWidth : 250}} >
+                                              <TimelineItem>
+                                                <TimelineOppositeContent color="text.secondary">
+                                                  09:30 am
+                                                </TimelineOppositeContent>
+                                                <TimelineSeparator>
+                                                  <TimelineDot />
+                                                  <TimelineConnector />
+                                                </TimelineSeparator>
+                                                <TimelineContent>Eat</TimelineContent>
+                                              </TimelineItem>
+                                              <TimelineItem>
+                                                <TimelineOppositeContent color="text.secondary">
+                                                  10:00 am
+                                                </TimelineOppositeContent>
+                                                <TimelineSeparator>
+                                                  <TimelineDot />
+                                                  <TimelineConnector />
+                                                </TimelineSeparator>
+                                                <TimelineContent>Code</TimelineContent>
+                                              </TimelineItem>
+                                              <TimelineItem>
+                                                <TimelineOppositeContent color="text.secondary">
+                                                  12:00 am
+                                                </TimelineOppositeContent>
+                                                <TimelineSeparator>
+                                                  <TimelineDot />
+                                                  <TimelineConnector />
+                                                </TimelineSeparator>
+                                                <TimelineContent>Sleep</TimelineContent>
+                                              </TimelineItem>
+                                              <TimelineItem>
+                                                <TimelineOppositeContent color="text.secondary">
+                                                  9:00 am
+                                                </TimelineOppositeContent>
+                                                <TimelineSeparator>
+                                                  <TimelineDot />
+                                                  <TimelineConnector />
+                                                </TimelineSeparator>
+                                                <TimelineContent>Repeat</TimelineContent>
+                                              </TimelineItem>
+                                            </Timeline>
+                                            <Card sx={{ minWidth: 275 , background : 'transparent' ,  boxShadow : '0' }}>
+      <CardContent>
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+          Word of the Day
+        </Typography>
+        
+        <Typography sx={{ mb: 1.5 }} color="text.secondary">
+          adjective
+        </Typography>
+        <Typography variant="body2">
+          well meaning and kindly.
+          <br />
+          {'"a benevolent smile"'}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button size="small">Learn More</Button>
+      </CardActions>
+    </Card>
+      
                                         </AccordionDetails>
                                   </Accordion>
                                   ) )}

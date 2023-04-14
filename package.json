@@ -29,6 +29,7 @@
         "@emotion/react": "^11.10.6",
         "@emotion/styled": "^11.10.6",
         "@mui/icons-material": "^5.11.16",
+        "@mui/lab": "^5.0.0-alpha.126",
         "@mui/material": "^5.11.16",
         "@mui/styled-engine": "^5.11.16",
         "datejs": "^1.0.0-rc3",
