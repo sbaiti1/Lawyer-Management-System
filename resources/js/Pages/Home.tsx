@@ -1,11 +1,6 @@
 
 import React from "react";
-import { useState } from "react";
 import "react-calendar/dist/Calendar.css";
-import Calendar from "react-calendar";
-import Navbar from "@/Components/Navbar";
-import Sidebar from "@/Components/Sidebar";
-import Table from "./Client/Table";
 import { PageProps } from '@/types';
 import FolderCopyIcon from '@mui/icons-material/FolderCopy';
 import PeopleIcon from '@mui/icons-material/People';

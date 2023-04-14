@@ -1,15 +1,11 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { PageProps } from '@/types';
-import { Head, Link, useForm } from '@inertiajs/react';
-import Navbar from '@/Components/Navbar';
-import Avatar from '@mui/material/Avatar';
+import { Link } from '@inertiajs/react';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
-import TextField from '@mui/material/TextField';
 import AddIcon from '@mui/icons-material/Add';
 import FolderIcon from '@mui/icons-material/Folder';
-import { Divider } from '@mui/material';
 import Layout from '@/Layouts/Layout';
 interface FormValues {
   id : number ;
@@ -78,7 +74,6 @@ const Show : React.FC<ShowProps> = (props : ShowProps) => {
                                   </div>) )}
 
                                   
-                                    {/* <Divider  /> */}
                             </div>
 
 

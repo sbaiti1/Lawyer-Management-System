@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import { PageProps } from '@/types';
 import { Head, Link, useForm } from '@inertiajs/react';
-import Navbar from '@/Components/Navbar';
 import Layout from '@/Layouts/Layout';
 
 interface FormValues {
