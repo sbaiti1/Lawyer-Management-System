@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { PageProps } from '@/types';
 import { Link } from '@inertiajs/react';
 import PhoneIcon from '@mui/icons-material/Phone';
@@ -28,16 +28,13 @@ interface ShowProps extends PageProps {
 
 }
 
-function stringAvatar(name: string) {
-    return {
 
-      children: `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`,
-    };
-  }
 
 const Show : React.FC<ShowProps> = (props : ShowProps) => {
   console.log(props.dossiers);
-  
+  const [searchQuery, setSearchQuery] = useState("");  
+  const filteredDossiers = props.dossiers.filter((item) => item.code.toLowerCase().includes(searchQuery.toLowerCase()));
+  const output = filteredDossiers ? filteredDossiers : props.dossiers
         return (
             <>
                         <Layout>
@@ -59,6 +56,8 @@ const Show : React.FC<ShowProps> = (props : ShowProps) => {
                                 <div className="flex-shrink-0"><input
                                   className="block w-full px-2 py-1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                   type="text"
+                                  value={searchQuery}
+                                  onChange={(e) => setSearchQuery(e.target.value)}
                                   placeholder="بحث"
                                 /></div>
                                 <div className="flex-shrink-0">   <Link href={`/dossiers/create?client_id=${props.data.id}`} className="bg-emerald-500 text-white px-4 py-2 rounded"><span><AddIcon/></span> إضافة </Link>
@@ -68,7 +67,7 @@ const Show : React.FC<ShowProps> = (props : ShowProps) => {
                             <div className="mt-8 flex flex-col gap-3">
 
                                   
-                                    {props.dossiers.map(x=> (<div className="flex px-3 py-3 bg-slate-200 shadow-sm  rounded cursor-pointer hover:scale-105 transform transition duration-300">
+                                    { output.map(x=> (<div className="flex px-3 py-3 bg-slate-200 shadow-sm  rounded cursor-pointer hover:scale-105 transform transition duration-300">
                                     <FolderIcon   style={{color : '#f87171'}} />
                                     <div className="text-slate-700 px-5"> {x.code} </div>
                                   </div>) )}
