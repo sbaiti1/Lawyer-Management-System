@@ -49,7 +49,8 @@ class DossierController extends Controller
         //
         $data = Dossier::find($dossier->id) ;
         $p = $data->client ;
-        return $data ."client : " . $p ;
+        $t = $data->taches ;
+        return' les taches : ' . $t;
     }
 
     /**

@@ -10,10 +10,13 @@ class Dossier extends Model
     use HasFactory;
 
     protected $fillable = [
-        'code' , 'client_id'
+        'code' , 'description', 'client_id'
     ] ;
 
     public function client(){
         return $this->belongsTo(Client::class) ;
+    }
+    public function taches(){
+        return $this->hasMany(Tache::class);
     }
 }
