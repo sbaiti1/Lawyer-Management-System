@@ -7,6 +7,12 @@ import EmailIcon from '@mui/icons-material/Email';
 import AddIcon from '@mui/icons-material/Add';
 import FolderIcon from '@mui/icons-material/Folder';
 import Layout from '@/Layouts/Layout';
+
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 interface FormValues {
   id : number ;
   nom: string;
@@ -32,6 +38,13 @@ interface ShowProps extends PageProps {
 
 const Show : React.FC<ShowProps> = (props : ShowProps) => {
   console.log(props.dossiers);
+  const [expanded, setExpanded] = React.useState<string | false>(false);
+
+  const handleChange =
+    (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
+      setExpanded(isExpanded ? panel : false);
+    };
+
   const [searchQuery, setSearchQuery] = useState("");  
   const filteredDossiers = props.dossiers.filter((item) => item.code.toLowerCase().includes(searchQuery.toLowerCase()));
   const output = filteredDossiers ? filteredDossiers : props.dossiers
@@ -49,7 +62,7 @@ const Show : React.FC<ShowProps> = (props : ShowProps) => {
                                     </button>
                             </div>
 
-                            <div className="bg-white flex flex-col gap-2 shadow-md w-full h-96 rounded-lg py-5 px-12 ">
+                            <div className="bg-white flex flex-col gap-2 shadow-md w-full min-h-96 rounded-lg py-5 px-12 ">
                             <div className="flex gap-6 justify-between items-center">
                                 <div className="flex-shrink-0 text-slate-600 w-fit font-bold text-xl"> لائحة الملفات </div>
                                 <div className="flex-grow"> </div>
@@ -67,11 +80,32 @@ const Show : React.FC<ShowProps> = (props : ShowProps) => {
                             <div className="mt-8 flex flex-col gap-3">
 
                                   
-                                    { output.map(x=> (<div className="flex px-3 py-3 bg-slate-200 shadow-sm  rounded cursor-pointer hover:scale-105 transform transition duration-300">
+                                    {/* { output.map((x , i)=> (<div className="flex px-3 py-3 bg-slate-200 shadow-sm  rounded cursor-pointer hover:scale-105 transform transition duration-300">
                                     <FolderIcon   style={{color : '#f87171'}} />
                                     <div className="text-slate-700 px-5"> {x.code} </div>
-                                  </div>) )}
+                                  </div>) )} */}
 
+                                  { output.map((x , i)=> (
+
+                                  <Accordion sx={{background : '#f8fafc'}} expanded={expanded === `panel${i}`} onChange={handleChange(`panel${i}`)}>
+                                        <AccordionSummary
+                                          expandIcon={<ExpandMoreIcon />}
+                                          aria-controls={`panel${i}bh-content`}
+                                          id={`panel${i}bh-header`}
+                                        >
+                                          <Typography sx={{ width: '33%', display : 'flex' , alignItems : 'center' , flexShrink: 0 }}>
+                                              <FolderIcon   style={{color : '#f87171'}} /> 
+                                          <Typography sx={{padding : '0 12px' , color : '#334155'}}> {x.code} </Typography>
+                                          </Typography>
+                                        </AccordionSummary>
+                                        <AccordionDetails>
+                                          <Typography>
+                                            Nulla facilisi. Phasellus sollicitudin nulla et quam mattis feugiat.
+                                            Aliquam eget maximus est, id dignissim quam.
+                                          </Typography>
+                                        </AccordionDetails>
+                                  </Accordion>
+                                  ) )}
                                   
                             </div>
 
