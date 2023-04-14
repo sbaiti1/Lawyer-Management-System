@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('dossiers', function (Blueprint $table) {
             $table->id();
             $table->string('code');
+            $table->text('description')->nullable();
             $table->foreignId('client_id')->constrainted('clients');
-            $table->timestamps();
+            $table->timestamps();   
         });
     }
 

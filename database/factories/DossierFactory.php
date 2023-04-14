@@ -30,7 +30,8 @@ class DossierFactory extends Factory
         return [
             //
 
-            'code' => sprintf("%04d-%s%s", $incrementNumber, $fourDigits, $year), 
+            'code' => sprintf("%04d-%s%s", $incrementNumber, $fourDigits, $year),
+            'description' => $this->faker->paragraph(), 
             'client_id' => function(){
                 return \App\Models\Client::factory()->create()->id;
             }
