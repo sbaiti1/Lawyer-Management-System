@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tache;
+use App\Models\Dossier;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+
 
 class TacheController extends Controller
 {
@@ -18,9 +21,13 @@ class TacheController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
         //
+        $dossierId = $request->input('dossier_id');
+        $dossier = Dossier::find($dossierId);
+        $client = $dossier->client ;
+        return Inertia::render('Tache/Create' , ['client' =>$client , 'dossier' => $dossier]);
     }
 
     /**
@@ -29,6 +36,15 @@ class TacheController extends Controller
     public function store(Request $request)
     {
         //
+        $t = new Tache ; 
+        $t->nom = $request->tache_nom ; 
+        $t->description = $request->tache_desc ; 
+        $t->echeance = $request->echeance ; 
+        $t->dossier_id = $request->id;
+        $t->save() ;
+
+        return redirect('/clients/' .$request->client_id) ;
+
     }
 
     /**

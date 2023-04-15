@@ -136,7 +136,7 @@ const Show : React.FC<ShowProps> = (props : ShowProps) => {
       
       </CardContent>
       <CardActions>
-      <Button color='success' size='medium' startIcon={<AddIcon />}  variant="outlined" href="/clients">إضافة إجراء</Button>      </CardActions>
+      <Button color='success' size='medium' startIcon={<AddIcon />}  variant="outlined" href={`/taches/create?dossier_id=${x.id}`}>إضافة إجراء</Button>      </CardActions>
     </Card>
       
                                         </AccordionDetails>

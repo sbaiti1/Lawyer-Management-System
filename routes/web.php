@@ -39,6 +39,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/home' , [HomeController::class, 'index'] );
     Route::resource('/clients' , 'App\Http\Controllers\ClientController');
     Route::resource('/dossiers' , 'App\Http\Controllers\DossierController');
+    Route::resource('/taches' , 'App\Http\Controllers\TacheController');
+
 });
 
 // Route::get('/test' , function(){
