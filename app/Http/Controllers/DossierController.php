@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Dossier;
 use App\Models\Client;
+use App\Models\Tache;
+
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -43,8 +45,15 @@ class DossierController extends Controller
         $d->code = $request->code ; 
         $d->description = $request->description ; 
         $d->client_id = $request->client_id ; 
-        $d->save(); 
-        //return response($c->nom . " added to databse"); 
+        $d->save();
+        //creer une tache pour le dossier
+        $t = new Tache ; 
+        $t->nom = $request->tache_nom ; 
+        $t->description = $request->tache_desc ; 
+        $t->echeance = $request->echeance ; 
+        $t->dossier_id = $d->id;
+        $t->save() ;
+
         return redirect('/clients/' .$d->client_id) ;
     }
 

@@ -40,6 +40,7 @@ interface FormValues {
 interface Dossier {
   id : number ;
   code: string;
+  taches : {nom : string , echeance : string}[]
   
 }
 
@@ -114,66 +115,28 @@ const Show : React.FC<ShowProps> = (props : ShowProps) => {
                                           </Typography>
                                         </AccordionSummary>
                                         <AccordionDetails sx={{display : 'flex' , justifyContent : 'space-between'}}>
-                                        <Timeline sx={{maxWidth : 250}} >
+                                        <Timeline sx={{maxWidth : 300}} >
+                                          {x.taches.map((t , i)=>(
+
                                               <TimelineItem>
                                                 <TimelineOppositeContent color="text.secondary">
-                                                  09:30 am
-                                                </TimelineOppositeContent>
+                                                {t.echeance.slice(0, 10)}                                                 </TimelineOppositeContent>
                                                 <TimelineSeparator>
                                                   <TimelineDot />
                                                   <TimelineConnector />
                                                 </TimelineSeparator>
-                                                <TimelineContent>Eat</TimelineContent>
+                                                <TimelineContent>{t.nom} </TimelineContent>
                                               </TimelineItem>
-                                              <TimelineItem>
-                                                <TimelineOppositeContent color="text.secondary">
-                                                  10:00 am
-                                                </TimelineOppositeContent>
-                                                <TimelineSeparator>
-                                                  <TimelineDot />
-                                                  <TimelineConnector />
-                                                </TimelineSeparator>
-                                                <TimelineContent>Code</TimelineContent>
-                                              </TimelineItem>
-                                              <TimelineItem>
-                                                <TimelineOppositeContent color="text.secondary">
-                                                  12:00 am
-                                                </TimelineOppositeContent>
-                                                <TimelineSeparator>
-                                                  <TimelineDot />
-                                                  <TimelineConnector />
-                                                </TimelineSeparator>
-                                                <TimelineContent>Sleep</TimelineContent>
-                                              </TimelineItem>
-                                              <TimelineItem>
-                                                <TimelineOppositeContent color="text.secondary">
-                                                  9:00 am
-                                                </TimelineOppositeContent>
-                                                <TimelineSeparator>
-                                                  <TimelineDot />
-                                                  <TimelineConnector />
-                                                </TimelineSeparator>
-                                                <TimelineContent>Repeat</TimelineContent>
-                                              </TimelineItem>
+                                          ))}
+                                              
                                             </Timeline>
                                             <Card sx={{ minWidth: 275 , background : 'transparent' ,  boxShadow : '0' }}>
       <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Word of the Day
-        </Typography>
-        
-        <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          adjective
-        </Typography>
-        <Typography variant="body2">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
-        </Typography>
+       
+      
       </CardContent>
       <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
+      <Button color='success' size='medium' startIcon={<AddIcon />}  variant="outlined" href="/clients">إضافة إجراء</Button>      </CardActions>
     </Card>
       
                                         </AccordionDetails>
