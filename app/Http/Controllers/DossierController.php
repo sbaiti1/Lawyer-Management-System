@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 
-use App\Mail\TacheCompleted;
+use App\Mail\DossierCompleted;
 use Illuminate\Support\Facades\Mail;
 
 class DossierController extends Controller
@@ -50,6 +50,7 @@ class DossierController extends Controller
         $d->description = $request->description ; 
         $d->client_id = $request->client_id ; 
         $d->save();
+        Mail::to('privtouka@gmail.com')->send(new DossierCompleted($d));
         //creer une tache pour le dossier
         $t = new Tache ; 
         $t->nom = $request->tache_nom ; 
@@ -58,7 +59,6 @@ class DossierController extends Controller
         $t->dossier_id = $d->id;
         $t->save() ;
         $action = $request->code;
-        Mail::to('privtouka@gmail.com')->send(new TacheCompleted($d));
         return redirect('/clients/' .$d->client_id) ;
     }
 

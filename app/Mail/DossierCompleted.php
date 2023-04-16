@@ -11,7 +11,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Address;
 use App\Models\Dossier;
 
-class TacheCompleted extends Mailable
+class DossierCompleted extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -35,7 +35,7 @@ class TacheCompleted extends Mailable
         return new Envelope(
             from: new Address('salmasbaiti1@gmail.com', 'salma sbaiti'),
             
-            subject: 'Tache Completed',
+            subject: 'Dossier Completed',
         );
     }
 
@@ -47,9 +47,9 @@ class TacheCompleted extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.tache_completed',
+            view: 'emails.dossier_completed',
             with : [
-                'action' => $this->dossier->code,
+                'code' => $this->dossier->code,
             ],
         );
     }
