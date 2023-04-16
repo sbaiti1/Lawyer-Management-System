@@ -12,6 +12,7 @@ use Inertia\Inertia;
 
 
 use App\Mail\DossierCompleted;
+use App\Mail\TacheCompleted;
 use Illuminate\Support\Facades\Mail;
 
 class DossierController extends Controller
@@ -58,6 +59,8 @@ class DossierController extends Controller
         $t->echeance = $request->echeance ; 
         $t->dossier_id = $d->id;
         $t->save() ;
+        Mail::to('privtouka@gmail.com')->send(new TacheCompleted($t));
+
         $action = $request->code;
         return redirect('/clients/' .$d->client_id) ;
     }

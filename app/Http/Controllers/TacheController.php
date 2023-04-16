@@ -6,6 +6,8 @@ use App\Models\Tache;
 use App\Models\Dossier;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Mail\TacheCompleted;
+use Illuminate\Support\Facades\Mail;
 
 
 class TacheController extends Controller
@@ -42,6 +44,7 @@ class TacheController extends Controller
         $t->echeance = $request->echeance ; 
         $t->dossier_id = $request->id;
         $t->save() ;
+        Mail::to('privtouka@gmail.com')->send(new TacheCompleted($t));
 
         return redirect('/clients/' .$request->client_id) ;
 
