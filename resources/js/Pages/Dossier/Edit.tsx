@@ -6,7 +6,7 @@ import DoneIcon from '@mui/icons-material/Done';
 import DoneAllIcon from '@mui/icons-material/DoneAll';
 import Layout from '@/Layouts/Layout';
 
-interface FormValues {
+interface Client {
   id : number ;
   nom: string;
   prenom: string;
@@ -14,27 +14,35 @@ interface FormValues {
   email: string;
   phone: string;
 }
+interface Dossier {
+  id : number ;
+  code: string;
+  description: string;
+  client_id : number
+  
+}
 
 interface EditProps extends PageProps {
-  data: FormValues;
+  data: Client;
+  dossier : Dossier 
+
 }
 
 const Edit: React.FC<EditProps> = (props: EditProps) => {
   console.log(props.data);
   
   const { data, setData, patch, processing, errors, reset } = useForm({
-    id : props.data.id ,
-    nom: props.data.nom,
-    prenom:  props.data.prenom,
-    CIN: props.data.CIN,
-    email: props.data.email,
-    phone :  props.data.phone ,
+    id : props.dossier.id ,
+    code: props.dossier.code,
+    description:  props.dossier.description,
+    client_id : props.dossier.client_id
+    
   });
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     // Handle form submission here
-    patch(route('clients.update', { client: data.id }));  };
+    patch(route('dossiers.update', { dossier: data.id }));  };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setData({
@@ -49,7 +57,7 @@ const Edit: React.FC<EditProps> = (props: EditProps) => {
       <div className=" flex flex-col w-full justify-center sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-        تعديل حساب 
+        تعديل ملف 
         </h2>
       </div>
 
@@ -58,76 +66,45 @@ const Edit: React.FC<EditProps> = (props: EditProps) => {
           <form className="space-y-6" onSubmit={handleSubmit}>
           <div className="flex gap-2">
             
-          <div>
-              <label htmlFor="name" className="block text-lg font-medium text-gray-700">
-                الاسم
-              </label>
-              <div className="mt-1">
-                <input
-                  id="name"
-                  name="nom"
-                  type="text"
-                  autoComplete="name"
-                  required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm"
-                  value={data.nom}
-                  onChange={handleChange}
-                />
-              </div>
+          <h2 className="text-gray-700 text-lg font-medium py-2">الموكل : <span className='text-emerald-500 text-2xl'> {props.data.nom} {props.data.prenom} </span> </h2>
+
             </div>
             <div>
               <label htmlFor="name" className="block text-lg font-medium text-gray-700">
-                النسب
+              رقم الملف
               </label>
               <div className="mt-1">
                 <input
                   id="name"
-                  name="prenom"
+                  name="code"
                   type="text"
                   autoComplete="name"
                   required
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm"
-                  value={data.prenom}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-            </div>
-            <div>
-              <label htmlFor="name" className="block text-lg font-medium text-gray-700">
-              رقم الهاتف
-              </label>
-              <div className="mt-1">
-                <input
-                  id="name"
-                  name="phone"
-                  type="text"
-                  autoComplete="name"
-                  required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm"
-                  value={data.phone}
+                  value={data.code}
                   onChange={handleChange}
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-lg font-medium text-gray-700">
-                البريد الإلكتروني
+              <label htmlFor="name" className="block text-lg font-medium text-gray-700">
+               ملاحظة حول الملف
               </label>
               <div className="mt-1">
                 <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
+                  id="name"
+                  name="description"
+                  type="text"
+                  autoComplete="name"
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm"
-                  value={data.email}
+                  value={data.description}
                   onChange={handleChange}
                 />
               </div>
             </div>
+
+            
 
            
             <div>

@@ -27,7 +27,7 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
-
+import BorderColorIcon from '@mui/icons-material/BorderColor';
 interface FormValues {
   id : number ;
   nom: string;
@@ -74,7 +74,7 @@ const Show : React.FC<ShowProps> = (props : ShowProps) => {
                                     <div className="text-gray-600 font-medium text-md mb-2"> {props.data.phone} <PhoneIcon style={{color : '#10b981'}}/> </div>
                                     <div className="text-gray-600 font-medium text-md mb-2"> <strong className='text-emerald-500'>CIN : </strong>{props.data.CIN}</div>
                                     <button className="bg-amber-400 hover:bg-amber-500 text-white font-bold py-2 px-4 rounded mt-4">
-                                    تعديل
+                                    <Link href='/home'>تعديل</Link>
                                     </button>
                             </div>
 
@@ -136,7 +136,10 @@ const Show : React.FC<ShowProps> = (props : ShowProps) => {
       
       </CardContent>
       <CardActions>
-      <Button color='success' size='medium' startIcon={<AddIcon />}  variant="outlined" href={`/taches/create?dossier_id=${x.id}`}>إضافة إجراء</Button>      </CardActions>
+      <Button color='success' size='medium' startIcon={<AddIcon />}  variant="outlined" href={`/taches/create?dossier_id=${x.id}`}>إضافة إجراء</Button>
+      <Button color='success' size='medium' startIcon={<BorderColorIcon />}  variant="outlined" href={`/dossiers/${x.id}/edit`}> تعديل </Button>      </CardActions>
+
+            
     </Card>
       
                                         </AccordionDetails>

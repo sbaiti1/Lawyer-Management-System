@@ -83,6 +83,9 @@ class DossierController extends Controller
     public function edit(Dossier $dossier)
     {
         //
+        $client  =  $dossier->client ; 
+        return Inertia::render('Dossier/Edit' , ["data" => $client , "dossier" =>$dossier]) ;
+
     }
 
     /**
@@ -91,6 +94,14 @@ class DossierController extends Controller
     public function update(Request $request, Dossier $dossier)
     {
         //
+        $d = Dossier::find($dossier->id) ;
+        $d->code = $request->code ; 
+        $d->description = $request->description ; 
+        $d->client_id = $request->client_id ;  
+        
+        $d->save(); 
+        return redirect('/clients/' .$request->client_id) ;
+        
     }
 
     /**

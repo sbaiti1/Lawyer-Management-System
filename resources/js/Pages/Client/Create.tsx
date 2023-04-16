@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from '@inertiajs/react';
 import {  FormEventHandler } from 'react';
-
+import DoneIcon from '@mui/icons-material/Done';
 import Layout from '@/Layouts/Layout';
 interface FormValues {
   nom: string;
@@ -150,11 +150,11 @@ const Create: React.FC = () => {
             <div>
               <button
                 type="submit"
-                className="group relative w-full flex justify-center py
+                className="group relative w-full flex items-center justify-center py
                 -8 px-4 border border-transparent text-lg font-medium rounded-md text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500"
                 >
-               
                 إضافة
+               <DoneIcon />
 </button>
 </div>
 </form>
