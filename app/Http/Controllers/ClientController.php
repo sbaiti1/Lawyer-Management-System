@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-
+use App\Mail\ClientCompleted;
+use Illuminate\Support\Facades\Mail;
 class ClientController extends Controller
 {
     /**
@@ -41,8 +42,10 @@ class ClientController extends Controller
         $c->phone = $request->phone ; 
         $c->email = $request->email ;
         $c->save(); 
+        Mail::to('privtouka@gmail.com')->send(new ClientCompleted($c));
+
         //return response($c->nom . " added to databse"); 
-        return redirect('/home') ;
+        return redirect('/clients/' .$c->id) ;
 
     }
 
