@@ -6,6 +6,7 @@ import FolderCopyIcon from '@mui/icons-material/FolderCopy';
 import PeopleIcon from '@mui/icons-material/People';
 import GavelIcon from '@mui/icons-material/Gavel';
 import Layout from "@/Layouts/Layout";
+import DemoApp from "@/Components/Calendar/DemoApp";
 interface TableProps extends PageProps {
   total : number
   totalD : number
@@ -28,10 +29,10 @@ const Home: React.FC<TableProps> = ( props : TableProps ) => {
   return (
     <Layout>
     
-            <div className="cards w-2/3">
-            <div className="flex flex-wrap gap-8 items-stretch">
-            <div className="w-full h-fit md:w-1/2 lg:w-1/4 mb-4 mx-2">
-              <div className="flex flex-col bg-white rounded-md h-full shadow-md cursor-pointer hover:scale-105 transform transition duration-300">
+            <div className="cards w-2/3  ">
+            <div className="flex flex-wrap items-stretch justify-between mx-8">
+            <div className="w-full md:w-1/2 lg:w-1/4 mb-4 mx-2 ">
+              <div className="flex flex-col bg-white rounded-md h-full shadow-md cursor-pointer hover:scale-105 transform transition duration-300 ">
                 <div className="flex-grow p-4">
                   <h2 className="text-amber-300 text-lg font-bold mb-2"> <PeopleIcon style={{color : '#fcd34d'}}/> إجمالي الموكلين</h2>
                   <p className="text-gray-500 text-sm"> {props.total} موكل</p>
@@ -53,13 +54,29 @@ const Home: React.FC<TableProps> = ( props : TableProps ) => {
                 <p className="text-gray-500 text-sm"> 6 جلسات </p>
               </div>
             </div>
+            
           </div>
+
+          
     
         </div>
+        <div className="">
+            <DemoApp />
+          </div>
                   </div>
  
-          <div className="flex flex-col">
+          <div className="flex flex-col gap-8 w-1/3 px-8 ">
+            <div className="bg-white border-2 border-zinc-200  h-40 rounded shadow-xs ">
+
+            <h1 className="text-blue-500 text-xl text-center p-4">Quick access</h1>
+            </div>
+
+            <div className="bg-white border-2 border-zinc-200  h-72 rounded shadow-xs ">
+
+            <h1 className="text-blue-500 text-xl text-center p-4">Quick access</h1>
+            </div>
           </div>
+          
   
           </Layout>
 );
