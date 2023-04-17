@@ -85,7 +85,7 @@ class ClientController extends Controller
         $c->phone = $request->phone ; 
         $c->email = $request->email ;
         $c->save(); 
-        return redirect('/home') ;
+        return redirect('/clients/' .$client->id) ;
     }
 
     /**

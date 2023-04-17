@@ -72,7 +72,7 @@ export default function Drawer() {
               <ListItemIcon>
                   <FolderCopyIcon style={{color : "#34d399"}}/>
               </ListItemIcon>
-              <Link style={{ color: "#334155" }}  href='/clients'>الملفات</Link>
+              <Link style={{ color: "#334155" }}  href='/dossiers'>الملفات</Link>
             </ListItemButton>
          </ListItem>
 
@@ -81,7 +81,7 @@ export default function Drawer() {
               <ListItemIcon>
                   <CalendarMonthIcon  style={{color : "#34d399"}} />
               </ListItemIcon>
-              <Link style={{ color: "#334155" }}  href='/clients'>تقويم</Link>
+              <Link style={{ color: "#334155" }}  href='/calendar'>تقويم</Link>
             </ListItemButton>
          </ListItem>
 
