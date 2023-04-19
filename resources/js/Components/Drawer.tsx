@@ -13,6 +13,7 @@ import FolderCopyIcon from '@mui/icons-material/FolderCopy';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import { Link } from '@inertiajs/react';
+import ArchiveIcon from '@mui/icons-material/Archive';
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
 export default function Drawer() {
@@ -81,7 +82,17 @@ export default function Drawer() {
               <ListItemIcon>
                   <CalendarMonthIcon  style={{color : "#34d399"}} />
               </ListItemIcon>
-              <Link style={{ color: "#334155" }}  href='/calendar'>تقويم</Link>
+              <Link style={{ color: "#wwww334155" }}  href='/calendar'>تقويم</Link>
+            </ListItemButton>
+         </ListItem>
+
+
+         <ListItem className=' py-2' key={" أرشيف"} disablePadding>
+         <ListItemButton>
+              <ListItemIcon>
+                  <ArchiveIcon  style={{color : "#34d399"}} />
+              </ListItemIcon>
+              <Link style={{ color: "#334155" }}  href='/archive'>أرشيف</Link>
             </ListItemButton>
          </ListItem>
 
