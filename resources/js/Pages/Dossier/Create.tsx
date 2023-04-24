@@ -25,7 +25,7 @@ const Create: React.FC<CreateProps> = (props:CreateProps) => {
     code: '',
     description: '',
     client_id: props.client.id,
-    tache_nom : '' , 
+    tache_nom : "فتح الملف" , 
     tache_desc : '' , 
     echeance : ''
 
@@ -113,7 +113,7 @@ const Create: React.FC<CreateProps> = (props:CreateProps) => {
               <label htmlFor="tache_nom" className="block text-lg font-medium text-gray-700">
 نوع الاجراء              </label>
               <div className="mt-1">
-              <select name='tache_nom'onChange={handleChange} className="border border-gray-300 p-2 px-8 rounded">
+              <select value={data.tache_nom} name='tache_nom'onChange={handleChange} className="border border-gray-300 p-2 px-8 rounded">
                   <option value="فتح الملف">فتح الملف</option>
                   <option value="إستدعاء">إستدعاء</option>
                   <option value="حكم"> حكم</option>

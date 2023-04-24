@@ -82,7 +82,7 @@ export default function Drawer() {
               <ListItemIcon>
                   <CalendarMonthIcon  style={{color : "#34d399"}} />
               </ListItemIcon>
-              <Link style={{ color: "#wwww334155" }}  href='/calendar'>تقويم</Link>
+              <Link style={{ color: "#334155" }}  href='/calendar'>تقويم</Link>
             </ListItemButton>
          </ListItem>
 
