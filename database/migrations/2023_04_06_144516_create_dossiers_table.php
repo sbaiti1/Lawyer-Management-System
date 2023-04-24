@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->foreignId('client_id')->constrainted('clients');
             $table->timestamps();   
+            $table->boolean('archived')->default(false);
         });
     }
 

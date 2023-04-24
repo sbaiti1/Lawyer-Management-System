@@ -15,7 +15,8 @@ class ClientController extends Controller
     public function index()
     {
         //
-        $data = Client::All();
+        //$data = Client::All();
+        $data = Client::where('archived', false)->get();
         return Inertia::render('Client/Index' , ['data'=>$data]) ;
     }
 

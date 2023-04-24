@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ArchiveController;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -37,6 +38,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/home' , [HomeController::class, 'index'] );
+    Route::get('/archive' , [ArchiveController::class, 'index'] );
+    Route::patch('/clients/{id}/archive', [\App\Http\Controllers\ArchiveController::class, 'archiveClient'])->name('clients.archive');
+
     Route::resource('/clients' , 'App\Http\Controllers\ClientController');
     Route::resource('/dossiers' , 'App\Http\Controllers\DossierController');
     Route::resource('/taches' , 'App\Http\Controllers\TacheController');

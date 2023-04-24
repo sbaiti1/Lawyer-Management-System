@@ -28,6 +28,8 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
+import { useForm } from '@inertiajs/react';
+
 interface FormValues {
   id : number ;
   nom: string;
@@ -56,9 +58,21 @@ const Show : React.FC<ShowProps> = (props : ShowProps) => {
   console.log(props.dossiers);
   const [expanded, setExpanded] = React.useState<string | false>(false);
 
+  const { data, setData, patch, processing, errors, reset } = useForm({
+    id : props.data.id ,
+    
+  });
+
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
+    };
+
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      const confirmed = window.confirm('Are you sure you want to delete this client?');
+      if (confirmed) {
+        patch(route(`clients.archive` , {id : data.id}));      }
     };
 
   const [searchQuery, setSearchQuery] = useState("");  
@@ -73,9 +87,18 @@ const Show : React.FC<ShowProps> = (props : ShowProps) => {
                                     <div className="text-gray-600 font-medium text-md mb-2 px-8 flex gap-1 items-center">  {props.data.email}  <EmailIcon style={{color : '#10b981'}}/></div>
                                     <div className="text-gray-600 font-medium text-md mb-2"> {props.data.phone} <PhoneIcon style={{color : '#10b981'}}/> </div>
                                     <div className="text-gray-600 font-medium text-md mb-2"> <strong className='text-emerald-500'>CIN : </strong>{props.data.CIN}</div>
+                                    <div className="flex gap-2">
                                     <button className="bg-amber-400 hover:bg-amber-500 text-white font-bold py-2 px-4 rounded mt-4">
                                     <Link href={`/clients/${props.data.id}/edit`}>تعديل</Link>
                                     </button>
+                                    <form onSubmit={handleSubmit} >
+                                      
+                                    <button type='submit' className="bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4 rounded mt-4">
+                                     حذف
+                                    </button>
+                                    </form>
+                                    
+                                    </div>
                             </div>
 
                             <div className="bg-white flex flex-col gap-2 shadow-md w-full min-h-96 rounded-lg py-5 px-12 ">
