@@ -19,6 +19,7 @@ return new class extends Migration
             $table->enum('statut', ['en cours', 'terminée', 'en attente'])->default('en attente');
             $table->timestamps();
             $table->foreignId('dossier_id')->constrainted('dossiers');
+            $table->unique(['nom', 'dossier_id']);
 
         });
     }
