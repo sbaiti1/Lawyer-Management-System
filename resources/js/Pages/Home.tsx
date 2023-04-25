@@ -10,6 +10,7 @@ import DemoApp from "@/Components/Calendar/DemoApp";
 interface TableProps extends PageProps {
   total : number
   totalD : number
+  date : number
   data: {
     id : number ;
     nom: string;
@@ -24,7 +25,7 @@ interface TableProps extends PageProps {
 
 
 const Home: React.FC<TableProps> = ( props : TableProps ) => {
-  console.log('hi');
+  console.log(props.date);
   
   return (
     <Layout>
@@ -51,7 +52,7 @@ const Home: React.FC<TableProps> = ( props : TableProps ) => {
             <div className="flex flex-col bg-white shadow-md cursor-pointer hover:scale-105 transform transition duration-300 rounded-lg h-full">
               <div className="flex-grow p-4">
                 <h2 className="text-emerald-500 text-lg font-bold mb-2"><GavelIcon style={{color : '#10b981'}}/> جلسات اليوم</h2>
-                <p className="text-gray-500 text-sm"> 6 جلسات </p>
+                <p className="text-gray-500 text-sm"> {props.date} جلسات </p>
               </div>
             </div>
             
