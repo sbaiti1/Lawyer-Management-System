@@ -19,13 +19,19 @@ interface TableProps extends PageProps {
     CIN: string;
     phone: string;
   }[];
+  events : {
+    nom : string , 
+    echeance : string
+  }[]
 }
 
 
 
 
 const Home: React.FC<TableProps> = ( props : TableProps ) => {
-  console.log(props.date);
+  console.log(props.events);
+
+  const events = props.events.map(e=>({title : e.nom , start : e.echeance , end : e.echeance , allDay : true}))
   
   return (
     <Layout>
@@ -62,7 +68,7 @@ const Home: React.FC<TableProps> = ( props : TableProps ) => {
     
         </div>
         <div className="">
-            <DemoApp />
+            <DemoApp data={events} />
           </div>
                   </div>
  

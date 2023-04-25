@@ -12,18 +12,35 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import { INITIAL_EVENTS, createEventId } from './event-utils'
 import './index.css'
-
+import { EventInput } from '@fullcalendar/core';
 interface DemoAppState {
   weekendsVisible: boolean
   currentEvents: EventApi[]
+  events: EventInput[];
 }
 
-export default class DemoApp extends React.Component<{}, DemoAppState> {
+interface PropsTypes {
+  data: EventInput[];
+}
+
+export default class DemoApp extends React.Component<PropsTypes, DemoAppState> {
 
   state: DemoAppState = {
     weekendsVisible: true,
-    currentEvents: []
+    currentEvents: [] , 
+    events: [],
+
   }
+  constructor(props: PropsTypes) {
+    super(props);
+    this.state = {
+      weekendsVisible: true,
+      currentEvents: [],
+      events: props.data
+    };
+    
+  }
+  
 
   render() {
     return (
@@ -43,7 +60,7 @@ export default class DemoApp extends React.Component<{}, DemoAppState> {
             selectMirror={true}
             dayMaxEvents={true}
             weekends={this.state.weekendsVisible}
-            initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
+            initialEvents={this.state.events} // alternatively, use the `events` setting to fetch from a feed
             select={this.handleDateSelect}
             eventContent={renderEventContent} // custom render function
             eventClick={this.handleEventClick}
@@ -53,6 +70,7 @@ export default class DemoApp extends React.Component<{}, DemoAppState> {
             eventChange={function(){}}
             eventRemove={function(){}}
             */
+            
           />
         </div>
       </div>

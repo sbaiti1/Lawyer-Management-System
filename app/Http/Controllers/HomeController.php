@@ -17,13 +17,14 @@ class HomeController extends Controller
         $total = Client::count();
         $totalD = Dossier::count();
         $date = Tache::whereDate('echeance', today())->count();
-
+        $events = Tache::All() ;
         //return response($latest);
         return Inertia::render('Home' ,
          ['data' =>$latest ,
           'total' => $total ,
           'totalD' => $totalD ,
-          'date' => $date
+          'date' => $date , 
+          'events' => $events
 
           ]) ;
      }
