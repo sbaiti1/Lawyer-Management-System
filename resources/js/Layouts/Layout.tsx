@@ -8,7 +8,7 @@ interface Props {
 
 const Layout:React.FC<Props> = ({children})=>{
     return(
-        <div dir="rtl" className="h-screen bg-slate-50">
+        <div dir="rtl" className="min-h-screen bg-slate-50">
      
         <Navbar />
         <div className="p-4 flex  py-8">
