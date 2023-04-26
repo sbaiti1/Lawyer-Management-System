@@ -39,6 +39,7 @@
         "@mui/styled-engine": "^5.11.16",
         "datejs": "^1.0.0-rc3",
         "dayjs": "^1.11.7",
-        "react-calendar": "^4.2.1"
+        "react-calendar": "^4.2.1",
+        "react-router-dom": "^6.10.0"
     }
 }

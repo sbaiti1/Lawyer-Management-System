@@ -44,6 +44,7 @@ const Table : React.FC<TableProps> = ({data}) => {
       rows={rows}
       columns={columns}
       checkboxSelection
+      
     />
   </div>
   );

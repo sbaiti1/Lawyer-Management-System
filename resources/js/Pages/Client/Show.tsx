@@ -29,6 +29,8 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
 import { useForm } from '@inertiajs/react';
+import DeleteIcon from '@mui/icons-material/Delete';
+import IconButton from '@mui/material/IconButton';
 
 interface FormValues {
   id : number ;
@@ -42,7 +44,7 @@ interface FormValues {
 interface Dossier {
   id : number ;
   code: string;
-  taches : {nom : string , echeance : string}[]
+  taches : {id : number ,nom : string , echeance : string}[]
   
 }
 
@@ -138,7 +140,7 @@ const Show : React.FC<ShowProps> = (props : ShowProps) => {
                                           </Typography>
                                         </AccordionSummary>
                                         <AccordionDetails sx={{display : 'flex' , justifyContent : 'space-between'}}>
-                                        <Timeline sx={{maxWidth : 300}} >
+                                        <Timeline sx={{maxWidth : 350}} >
                                           {x.taches.map((t , i)=>(
 
                                               <TimelineItem>
@@ -148,7 +150,14 @@ const Show : React.FC<ShowProps> = (props : ShowProps) => {
                                                   <TimelineDot />
                                                   <TimelineConnector />
                                                 </TimelineSeparator>
-                                                <TimelineContent>{t.nom} </TimelineContent>
+                                                <TimelineContent>
+                                                 
+                                                <Box sx={{display : 'flex' , alignItems : 'center'}}>
+                                                  <Typography> {t.nom}</Typography>
+                                                <IconButton   href={`/taches/${t.id}/edit`} > <BorderColorIcon /> </IconButton> 
+                                                </Box>
+                                                </TimelineContent>
+
                                               </TimelineItem>
                                           ))}
                                               

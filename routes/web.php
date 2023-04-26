@@ -44,6 +44,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('/clients' , 'App\Http\Controllers\ClientController');
     Route::resource('/dossiers' , 'App\Http\Controllers\DossierController');
     Route::resource('/taches' , 'App\Http\Controllers\TacheController');
+   // Route::get('/taches/{id}/edit', [\App\Http\Controllers\TacheController::class, 'edit']);
+
     Route::resource('/calendar' , 'App\Http\Controllers\CalendarController');
 
 });
