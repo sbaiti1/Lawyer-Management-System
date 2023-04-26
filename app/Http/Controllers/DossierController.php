@@ -36,8 +36,14 @@ class DossierController extends Controller
         //
         $clientId = $request->input('client_id');
         $client = Client::find($clientId);
+        if (!$client->archived) {
+            return Inertia::render('Dossier/Create' , ['client' =>$client]) ;
+        } else {
+            return back();
+        }
+        
+        
         //echo($data);
-        return Inertia::render('Dossier/Create' , ['client' =>$client]) ;
 
     }
 
@@ -72,6 +78,7 @@ class DossierController extends Controller
     public function show(Dossier $dossier)
     {
         //
+        
         $data = Dossier::find($dossier->id) ;
         $p = $data->client ;
         $t = $data->taches ;
@@ -85,7 +92,11 @@ class DossierController extends Controller
     {
         //
         $client  =  $dossier->client ; 
-        return Inertia::render('Dossier/Edit' , ["data" => $client , "dossier" =>$dossier]) ;
+        if (!$client->archived || !$dossier->archived) {
+            return Inertia::render('Dossier/Edit' , ["data" => $client , "dossier" =>$dossier]) ;
+        } else {
+            return back();
+        }
 
     }
 
