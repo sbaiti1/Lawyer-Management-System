@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { PageProps } from '@/types';
 
+import Dossiers from './dossier';
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
@@ -51,6 +52,18 @@ interface TableProps extends PageProps {
       CIN: string;
       phone: string;
     }[];
+
+    dossiers : {
+      id : number ;
+      code: string;
+      taches : {
+        client_id : number ;
+        id : number ;
+        nom : string ;
+        description : string ;
+        echeance : string ;
+      }[]
+    }[];
   }
   
 
@@ -63,23 +76,25 @@ const Archive : React.FC<TableProps>  = ( props : TableProps )=>{
     return(
         <Layout>
             <div className=" mx-auto w-full">
-            <div  className="mx-3 pb-5">
-            <AcUnitIcon />
+            <div  className="mx-3 pb-5 flex">
+            <div className="hidden"><AcUnitIcon sx={{display : 'hidden'}} /></div>
+            <h1 className="text-2xl font-bold text-emerald-500">قائمة الأرشيف</h1>
+
 
             </div>
             <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
+          <Tab label="الموكلين" {...a11yProps(0)} />
+          <Tab label="الملفات" {...a11yProps(1)} />
+          <Tab label="..." {...a11yProps(2)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
         <Table data={props.data}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <Dossiers data={props.dossiers} />
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three
