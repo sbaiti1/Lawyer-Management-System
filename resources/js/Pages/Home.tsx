@@ -22,19 +22,24 @@ interface TableProps extends PageProps {
   events : {
     nom : string , 
     echeance : string
-  }[]
+  }[] ; 
+
+  user : {
+    id : string , 
+    role : string 
+  }
 }
 
 
 
 
 const Home: React.FC<TableProps> = ( props : TableProps ) => {
-  console.log(props.events);
+  console.log(props.user.role);
 
   const events = props.events.map(e=>({title : e.nom , start : e.echeance , end : e.echeance , allDay : true}))
   
   return (
-    <Layout>
+    <Layout role={props.user.role}>
     
             <div className="cards w-2/3  ">
             <div className="flex flex-wrap items-stretch justify-between mx-8">

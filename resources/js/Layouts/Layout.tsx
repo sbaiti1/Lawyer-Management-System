@@ -4,16 +4,17 @@ import Navbar from "@/Components/Navbar";
 
 interface Props {
     children: React.ReactNode;
+    role : string 
   }
 
-const Layout:React.FC<Props> = ({children})=>{
+const Layout:React.FC<Props> = (props : Props)=>{
     return(
         <div dir="rtl" className="min-h-screen bg-slate-50">
      
-        <Navbar />
+        <Navbar role={props.role} />
         <div className="p-4 flex  py-8">
         
-                {children}
+                {props.children}
         
         </div>
         </div>

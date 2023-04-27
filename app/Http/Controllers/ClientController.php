@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Mail\ClientCompleted;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
+
+
 class ClientController extends Controller
 {
     /**
@@ -17,7 +20,9 @@ class ClientController extends Controller
         //
         //$data = Client::All();
         $data = Client::where('archived', false)->get();
-        return Inertia::render('Client/Index' , ['data'=>$data]) ;
+        $user = Auth::user();
+        return Inertia::render('Client/Index' , ['data'=>$data , 'user'=>$user]) ;
+
     }
 
     /**

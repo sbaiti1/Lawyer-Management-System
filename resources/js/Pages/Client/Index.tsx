@@ -16,6 +16,9 @@ interface TableProps extends PageProps {
     CIN: string;
     phone: string;
   }[];
+  user : {
+    role : string
+  }
 }
 
 
@@ -28,7 +31,7 @@ const Home: React.FC<TableProps> = ( props : TableProps ) => {
 
   return (
     
-        <Layout>
+        <Layout role={props.user.role}>
         
         <div className="w-11/12 mt-5 mx-auto">
 
