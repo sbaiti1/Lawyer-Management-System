@@ -15,6 +15,9 @@ use App\Mail\DossierCompleted;
 use App\Mail\TacheCompleted;
 use Illuminate\Support\Facades\Mail;
 
+use PhpOffice\PhpWord\PhpWord;
+use PhpOffice\PhpWord\IOFactory;
+
 class DossierController extends Controller
 {
     /**
@@ -122,5 +125,30 @@ class DossierController extends Controller
     public function destroy(Dossier $dossier)
     {
         //
+    }
+
+    public function downloadWord($id)
+    {
+        $data = Dossier::find($id) ;
+        $c = $data->client ;
+        $t = $data->taches ;
+         
+
+    $phpWord = new PhpWord();
+    $section = $phpWord->addSection();
+    //$section->addText('testing...');
+    
+    // Use the Blade view to generate additional content
+    $html = view('test')->render();
+    $html = '<h1 style="color: red; font-family: Arial;">Hello World</h1>';
+    //$section->addText($html);
+
+    \PhpOffice\PhpWord\Shared\Html::addHtml($section, $html, false, false);
+    // Save the Word file
+    $objWriter = IOFactory::createWriter($phpWord, 'Word2007');
+    $objWriter->save('my-word-file.docx');
+    
+    // Download the Word file
+    return response()->download('my-word-file.docx');
     }
 }

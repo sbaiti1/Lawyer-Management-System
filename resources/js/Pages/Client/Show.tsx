@@ -31,6 +31,7 @@ import BorderColorIcon from '@mui/icons-material/BorderColor';
 import { useForm } from '@inertiajs/react';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
+import DownloadIcon from '@mui/icons-material/Download';
 
 interface FormValues {
   id : number ;
@@ -169,7 +170,10 @@ const Show : React.FC<ShowProps> = (props : ShowProps) => {
       </CardContent>
       <CardActions>
       <Button sx={{margin : "0 8px"}} color='success' size='medium' startIcon={<AddIcon />}  variant="outlined" href={`/taches/create?dossier_id=${x.id}`}>إضافة إجراء</Button> 
-      <Button color='warning' size='medium' startIcon={<BorderColorIcon />}  variant="outlined" href={`/dossiers/${x.id}/edit`}>    تعديل ملف</Button>      </CardActions>
+      <Button color='warning' size='medium' startIcon={<BorderColorIcon />}  variant="outlined" href={`/dossiers/${x.id}/edit`}>    تعديل ملف</Button>      
+      <Button color='warning' size='medium' startIcon={<DownloadIcon />}  variant="outlined" href={`/dossiers/${x.id}/download`}>    تحميل ملف</Button> 
+         </CardActions>
+
 
             
     </Card>
