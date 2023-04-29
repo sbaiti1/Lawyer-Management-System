@@ -26,7 +26,7 @@ class DossierController extends Controller
     public function index()
     {
         //
-        $data = Dossier::with('taches')->where('archived', false)->get();
+        $data = Dossier::with('client' ,'taches')->where('archived', false)->get();
         $totalD = count($data);
         return Inertia::render('Dossier/Index' , ["dossiers" =>$data , "total"=>$totalD]) ;
     }

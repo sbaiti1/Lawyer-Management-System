@@ -29,8 +29,9 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
 import FolderCopyIcon from '@mui/icons-material/FolderCopy';
+import DownloadIcon from '@mui/icons-material/Download';
 
-interface FormValues {
+interface Client {
   id : number ;
   nom: string;
   prenom: string;
@@ -42,6 +43,7 @@ interface FormValues {
 interface Dossier {
   id : number ;
   code: string;
+  client : Client ;
   taches : {nom : string , echeance : string}[]
   
 }
@@ -56,7 +58,6 @@ interface ShowProps extends PageProps {
 
 
 const Show : React.FC<ShowProps> = (props : ShowProps) => {
-  console.log(props.dossiers);
   const [expanded, setExpanded] = React.useState<string | false>(false);
 
   const handleChange =
@@ -113,12 +114,16 @@ const Show : React.FC<ShowProps> = (props : ShowProps) => {
                                           <Typography sx={{ width: '33%', display : 'flex' , alignItems : 'center' , flexShrink: 0 }}>
                                               <FolderIcon   style={{color : '#f87171'}} /> 
                                           <Typography sx={{padding : '0 12px' , color : '#334155'}}> {x.code} </Typography>
+
                                           </Typography>
+
+                                          
                                         </AccordionSummary>
+                                          <Typography sx={{padding : '0 3rem' , color : '#334155'}}> <Button href={`clients/${x.client.id}`} > {x.client.nom} {x.client.prenom} </Button>   </Typography>
                                         <AccordionDetails sx={{display : 'flex' , justifyContent : 'space-between'}}>
                                         <Timeline sx={{maxWidth : 300}} >
                                           {x.taches.map((t , i)=>(
-
+                                            
                                               <TimelineItem>
                                                 <TimelineOppositeContent color="text.secondary">
                                                 {t.echeance.slice(0, 10)}                                                 </TimelineOppositeContent>
@@ -139,6 +144,7 @@ const Show : React.FC<ShowProps> = (props : ShowProps) => {
       <CardActions>
       <Button sx={{margin : "0 8px"}} color='success' size='medium' startIcon={<AddIcon />}  variant="outlined" href={`/taches/create?dossier_id=${x.id}`}>إضافة إجراء</Button> 
       <Button color='warning' size='medium' startIcon={<BorderColorIcon />}  variant="outlined" href={`/dossiers/${x.id}/edit`}> تعديل </Button>      </CardActions>
+      <Button  size='medium' startIcon={<DownloadIcon />}  variant="outlined" href={`/download/${x.id}`}>    تحميل ملف</Button> 
 
             
     </Card>
