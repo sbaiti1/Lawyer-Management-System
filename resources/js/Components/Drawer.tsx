@@ -53,7 +53,7 @@ export default function Drawer() {
   <ListItemIcon>
       <HomeIcon style={{ color: "#34d399" }} />
       </ListItemIcon>
-      <Link style={{ color: "#334155" }}  href='/home'>الصفحة الرئيسية</Link>
+      <Link style={{ color: "#334155" }}  href='/'>الصفحة الرئيسية</Link>
   </ListItemButton>
 </ListItem>
 
