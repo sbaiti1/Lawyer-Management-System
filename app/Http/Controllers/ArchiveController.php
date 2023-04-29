@@ -12,7 +12,7 @@ class ArchiveController extends Controller
     //
     public function index(){
         $data = Client::where('archived', true)->get();
-        $dossiers = Dossier::with('taches')->get();
+        $dossiers = Dossier::with('taches')->where('archived', true)->get();
         return Inertia::render('Archive/Index' , ['data'=>$data  , 'dossiers' =>$dossiers]) ;
     }
     
@@ -21,6 +21,20 @@ class ArchiveController extends Controller
         $client->archived = true;
         $client->save();
 
-        return redirect('/archive');
+         // Archive all of the client's dossiers
+            $dossiers = $client->dossiers;
+            foreach ($dossiers as $dossier) {
+                $dossier->archived = true;
+                $dossier->save();
+
+            // Archive all of the tasks associated with the dossier
+                $taches = $dossier->taches;
+                foreach ($taches as $tache) {
+                    $tache->archived = true;
+                    $tache->save();
+                }
+    }
+
+        return redirect('/clients');
     }
 }

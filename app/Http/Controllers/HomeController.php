@@ -15,10 +15,10 @@ class HomeController extends Controller
     //
     public function index(){
         $latest = Client::latest()->take(6)->get();
-        $total = Client::count();
-        $totalD = Dossier::count();
-        $date = Tache::whereDate('echeance', today())->count();
-        $events = Tache::All() ;
+        $total = Client::where('archived', false)->count();
+        $totalD = Dossier::where('archived', false)->count();
+        $date = Tache::whereDate('echeance', today())->where('archived', false)->count();
+        $events = Tache::where('archived', false)->get();
         $user = Auth::user();
         //return response($latest);
         return Inertia::render('Home' ,
