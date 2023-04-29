@@ -40,6 +40,7 @@ Route::middleware('auth' )->group(function () {
     Route::get('/home' , [HomeController::class, 'index'] );
     Route::get('/archive' , [ArchiveController::class, 'index'] );
     Route::patch('/clients/{id}/archive', [\App\Http\Controllers\ArchiveController::class, 'archiveClient'])->name('clients.archive');
+    Route::get('/download/{id}' , [\App\Http\Controllers\DossierController::class, 'downloadWord'] );
 
     Route::resource('/clients' , 'App\Http\Controllers\ClientController');
     Route::resource('/dossiers' , 'App\Http\Controllers\DossierController');

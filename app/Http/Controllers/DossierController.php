@@ -129,18 +129,18 @@ class DossierController extends Controller
 
     public function downloadWord($id)
     {
-        $data = Dossier::find($id) ;
-        $c = $data->client ;
-        $t = $data->taches ;
-         
+        $dossier = Dossier::find($id) ;
+        $c = $dossier->client ;
+        $t = $dossier->taches ;
+        
 
     $phpWord = new PhpWord();
     $section = $phpWord->addSection();
     //$section->addText('testing...');
     
     // Use the Blade view to generate additional content
-    $html = view('test')->render();
-    $html = '<h1 style="color: red; font-family: Arial;">Hello World</h1>';
+    //$html = view('test')->render();
+    $html = 'client : ' .$c->nom .' dossier : ' .$dossier->code;
     //$section->addText($html);
 
     \PhpOffice\PhpWord\Shared\Html::addHtml($section, $html, false, false);
@@ -150,5 +150,6 @@ class DossierController extends Controller
     
     // Download the Word file
     return response()->download('my-word-file.docx');
+    return back() ;
     }
 }

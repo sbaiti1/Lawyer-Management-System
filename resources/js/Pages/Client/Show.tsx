@@ -171,7 +171,7 @@ const Show : React.FC<ShowProps> = (props : ShowProps) => {
       <CardActions>
       <Button sx={{margin : "0 8px"}} color='success' size='medium' startIcon={<AddIcon />}  variant="outlined" href={`/taches/create?dossier_id=${x.id}`}>إضافة إجراء</Button> 
       <Button color='warning' size='medium' startIcon={<BorderColorIcon />}  variant="outlined" href={`/dossiers/${x.id}/edit`}>    تعديل ملف</Button>      
-      <Button color='warning' size='medium' startIcon={<DownloadIcon />}  variant="outlined" href={`/dossiers/${x.id}/download`}>    تحميل ملف</Button> 
+      <Button  size='medium' startIcon={<DownloadIcon />}  variant="outlined" href={`/download/${x.id}`}>    تحميل ملف</Button> 
          </CardActions>
 
 
