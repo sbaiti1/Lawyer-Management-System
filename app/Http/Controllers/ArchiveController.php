@@ -37,4 +37,21 @@ class ArchiveController extends Controller
 
         return redirect('/clients');
     }
+
+    public function archiveDossier($id){
+        $dossier = Dossier::findOrFail($id);
+        $dossier->archived = true;
+        $dossier->save();
+
+         // Archive all of the client's dossiers
+            $taches = $dossier->taches;
+            foreach ($taches as $tache) {
+                $tache->archived = true;
+                $tache->save();
+
+            
+    }
+
+        return redirect('/clients/' .$dossier->client->id);
+    }
 }

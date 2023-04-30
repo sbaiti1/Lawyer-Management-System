@@ -64,7 +64,7 @@ class ClientController extends Controller
         if (!$client->archived) {
                     
         $data = Client::find($client->id) ;
-        $dossiers = $client->dossiers()->with('taches')->get() ;
+        $dossiers = $client->dossiers()->where('archived', false)->with('taches')->get() ;
         
         return Inertia::render('Client/Show' , ["data" =>$data , "dossiers" =>$dossiers ]) ;
         } else {

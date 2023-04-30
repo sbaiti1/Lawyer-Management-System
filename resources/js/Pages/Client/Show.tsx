@@ -78,6 +78,13 @@ const Show : React.FC<ShowProps> = (props : ShowProps) => {
         patch(route(`clients.archive` , {id : data.id}));      }
     };
 
+    const ArchiveDossier = (event: React.FormEvent<HTMLFormElement> , id : number) => {
+      event.preventDefault();
+      const confirmed = window.confirm('Are you sure you want to delete this record?');
+      if (confirmed) {
+        patch(route(`dossiers.archive` , {id}));      }
+    };
+
   const [searchQuery, setSearchQuery] = useState("");  
   const filteredDossiers = props.dossiers.filter((item) => item.code.toLowerCase().includes(searchQuery.toLowerCase()));
   const output = filteredDossiers ? filteredDossiers : props.dossiers
@@ -167,11 +174,16 @@ const Show : React.FC<ShowProps> = (props : ShowProps) => {
       <CardContent>
        
       
-      </CardContent>
-      <CardActions>
+      </CardContent >
+      <CardActions sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '8px' }}>
       <Button sx={{margin : "0 8px"}} color='success' size='medium' startIcon={<AddIcon />}  variant="outlined" href={`/taches/create?dossier_id=${x.id}`}>إضافة إجراء</Button> 
       <Button color='warning' size='medium' startIcon={<BorderColorIcon />}  variant="outlined" href={`/dossiers/${x.id}/edit`}>    تعديل ملف</Button>      
       <Button  size='medium' startIcon={<DownloadIcon />}  variant="outlined" href={`/download/${x.id}`}>    تحميل ملف</Button> 
+      <form onSubmit={(e)=>ArchiveDossier(e ,x.id)} >
+
+      <Button type='submit' color='error'  size='medium' startIcon={<DeleteIcon />}  variant="outlined"  >    حذف ملف</Button> 
+      </form>
+
          </CardActions>
 
 
