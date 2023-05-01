@@ -18,7 +18,9 @@ class HomeController extends Controller
         $total = Client::where('archived', false)->count();
         $totalD = Dossier::where('archived', false)->count();
         $date = Tache::whereDate('echeance', today())->where('archived', false)->count();
-        $events = Tache::where('archived', false)->get();
+        $events = Tache::whereIn('nom', ['إستدعاء', 'حكم'])
+        ->where('archived', false)
+        ->get();
         $user = Auth::user();
         //return response($latest);
         return Inertia::render('Home' ,
