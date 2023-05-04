@@ -35,7 +35,7 @@ class DossierCompleted extends Mailable
         return new Envelope(
             from: new Address('salmasbaiti1@gmail.com', 'salma sbaiti'),
             
-            subject: 'Dossier Completed',
+            subject: ' فتح ملف ',
         );
     }
 

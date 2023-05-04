@@ -33,7 +33,7 @@ class ClientCompleted extends Mailable
         return new Envelope(
             from: new Address('salmasbaiti1@gmail.com', 'salma sbaiti'),
             
-            subject: 'Client Completed',
+            subject: ' فتح حساب ',
         );
     }
 

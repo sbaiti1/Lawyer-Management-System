@@ -1,2 +1,3 @@
-<p>Dossier has been created successfully. </p>
-<h1> numero de dossier : {{$code}} </h1>
+<p> لقد تم فتح ملفكم بنجاح </p>
+<br>
+<p> رقم الملف : {{$code}} </p>

@@ -1,3 +1,3 @@
-<p> Bonjour {{$nom}} {{$prenom}} </p>
-<p>Merci pour nous consulter </p>
-<p>Nous vous souhaite un bonne journée ! </p>
+<p> {{$nom}} {{$prenom}} مرحبًا</p>
+<br>
+<p> نود شكركم على قدوكم إلى مكتبنا </p>
