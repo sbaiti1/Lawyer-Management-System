@@ -123,7 +123,7 @@ const Create: React.FC<CreateProps> = (props:CreateProps) => {
 
             <div>
               <label htmlFor="echeance" className="block text-lg font-medium text-gray-700">
-              مدة الاجراء              </label>
+              تاريخ الاجراء              </label>
               <div className="mt-1">
               <input
                   id="echeance"

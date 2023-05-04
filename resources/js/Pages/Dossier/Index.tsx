@@ -7,6 +7,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import AddIcon from '@mui/icons-material/Add';
 import FolderIcon from '@mui/icons-material/Folder';
 import Layout from '@/Layouts/Layout';
+import { useForm } from '@inertiajs/react';
 
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -30,6 +31,7 @@ import Button from '@mui/material/Button';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
 import FolderCopyIcon from '@mui/icons-material/FolderCopy';
 import DownloadIcon from '@mui/icons-material/Download';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 interface Client {
   id : number ;
@@ -59,10 +61,20 @@ interface ShowProps extends PageProps {
 
 const Show : React.FC<ShowProps> = (props : ShowProps) => {
   const [expanded, setExpanded] = React.useState<string | false>(false);
-
+  const { data, setData, patch, processing, errors, reset } = useForm({
+    dossiers : props.dossiers,
+    
+  });
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
+    };
+
+    const ArchiveDossier = (event: React.FormEvent<HTMLFormElement> , id : number) => {
+      event.preventDefault();
+      const confirmed = window.confirm('Are you sure you want to delete this record?');
+      if (confirmed) {
+        patch(route(`dossiers.archive` , {id}));      }
     };
 
   const [searchQuery, setSearchQuery] = useState("");  
@@ -119,7 +131,7 @@ const Show : React.FC<ShowProps> = (props : ShowProps) => {
 
                                           
                                         </AccordionSummary>
-                                          <Typography sx={{padding : '0 3rem' , color : '#334155'}}> <Button href={`clients/${x.client.id}`} > {x.client.nom} {x.client.prenom} </Button>   </Typography>
+                                          <Typography sx={{padding : '0 3rem' , color : '#334155'}}> الموكل : <Button href={`clients/${x.client.id}`} > {x.client.nom} {x.client.prenom} </Button>  </Typography>
                                         <AccordionDetails sx={{display : 'flex' , justifyContent : 'space-between'}}>
                                         <Timeline sx={{maxWidth : 300}} >
                                           {x.taches.map((t , i)=>(
@@ -141,11 +153,15 @@ const Show : React.FC<ShowProps> = (props : ShowProps) => {
        
       
       </CardContent>
-      <CardActions>
+      <CardActions sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '8px'  }} >
       <Button sx={{margin : "0 8px"}} color='success' size='medium' startIcon={<AddIcon />}  variant="outlined" href={`/taches/create?dossier_id=${x.id}`}>إضافة إجراء</Button> 
-      <Button color='warning' size='medium' startIcon={<BorderColorIcon />}  variant="outlined" href={`/dossiers/${x.id}/edit`}> تعديل </Button>      </CardActions>
+      <Button color='warning' size='medium' startIcon={<BorderColorIcon />}  variant="outlined" href={`/dossiers/${x.id}/edit`}> تعديل </Button>      
       <Button  size='medium' startIcon={<DownloadIcon />}  variant="outlined" href={`/download/${x.id}`}>    تحميل ملف</Button> 
+      <form onSubmit={(e)=>ArchiveDossier(e ,x.id)} >
 
+<Button type='submit' color='error'  size='medium' startIcon={<DeleteIcon />}  variant="outlined"  >    حذف ملف</Button> 
+</form>
+</CardActions>
             
     </Card>
       

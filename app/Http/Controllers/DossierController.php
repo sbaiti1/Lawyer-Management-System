@@ -146,10 +146,10 @@ class DossierController extends Controller
     \PhpOffice\PhpWord\Shared\Html::addHtml($section, $html, false, false);
     // Save the Word file
     $objWriter = IOFactory::createWriter($phpWord, 'Word2007');
-    $objWriter->save('my-word-file.docx');
+    $objWriter->save($dossier->code.'.docx');
     
     // Download the Word file
-    return response()->download('my-word-file.docx');
+    return response()->download($dossier->code.'.docx');
     return back() ;
     }
 }
