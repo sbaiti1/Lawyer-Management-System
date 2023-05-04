@@ -88,7 +88,7 @@ const Create: React.FC<CreateProps> = (props:CreateProps) => {
               <label htmlFor="tache_nom" className="block text-lg font-medium text-gray-700">
 نوع الاجراء              </label>
               <div className="mt-1">
-              <select value={data.tache_nom} name='tache_nom'onChange={handleChange} className="border border-gray-300 p-2 px-8 rounded">
+              <select required value={data.tache_nom} name='tache_nom'onChange={handleChange} className="border border-gray-300 p-2 px-8 rounded">
                   <option value="فتح الملف">فتح الملف</option>
                   <option value="إستدعاء">إستدعاء</option>
                   <option value="حكم"> حكم</option>
@@ -100,7 +100,7 @@ const Create: React.FC<CreateProps> = (props:CreateProps) => {
               <label htmlFor="echeance" className="block text-lg font-medium text-gray-700">
               مدة الاجراء              </label>
               <div className="mt-1">
-              <input
+              <input required
                   id="echeance"
                   name="echeance"
                   type="date"

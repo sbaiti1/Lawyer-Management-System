@@ -149,7 +149,7 @@ function renderEventContent(eventContent: EventContentArg) {
   return (
     <>
       <b>{eventContent.timeText}</b>
-      <i>{eventContent.event.title}</i>
+      <i>جلسة {eventContent.event.title} </i>
     </>
   )
 }
@@ -158,7 +158,7 @@ function renderSidebarEvent(event: EventApi) {
   return (
     <li key={event.id}>
       <b>{formatDate(event.start!, {year: 'numeric', month: 'short', day: 'numeric'})}</b>
-      <i>{event.title}</i>
+      <i>{event.title} جلسة</i>
     </li>
   )
 }
