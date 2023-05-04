@@ -7,6 +7,9 @@ import PeopleIcon from '@mui/icons-material/People';
 import GavelIcon from '@mui/icons-material/Gavel';
 import Layout from "@/Layouts/Layout";
 import DemoApp from "@/Components/Calendar/DemoApp";
+import { Link } from "@inertiajs/react";
+import AddIcon from '@mui/icons-material/Add';
+
 interface TableProps extends PageProps {
   total : number
   totalD : number
@@ -78,14 +81,21 @@ const Home: React.FC<TableProps> = ( props : TableProps ) => {
                   </div>
  
           <div className="flex flex-col gap-8 w-1/3 px-8 ">
-            <div className="bg-white border-2 border-zinc-200  h-40 rounded shadow-xs ">
+            <div className="flex flex-col gap-4 items-center bg-white border-2 border-zinc-200  h-40 rounded shadow-xs ">
 
-            <h1 className="text-blue-500 text-xl text-center p-4">Quick access</h1>
+            <h1 className="text-blue-500 text-xl text-center px-4 py-2">إضافة جديدة</h1>
+            <div className="mx-auto mb-2 "> 
+              <Link href="/clients/create" className="bg-emerald-500 text-white px-16 py-2 rounded "><span><AddIcon/></span>  إضافة موكل</Link>
+            </div>
+
+            <div className="mx-auto"> 
+              <Link href="/clients/create" className="bg-emerald-500 text-white px-16 py-2 rounded "><span><AddIcon/></span>  إضافة حدث</Link>
+            </div>
             </div>
 
             <div className="bg-white border-2 border-zinc-200  h-72 rounded shadow-xs ">
 
-            <h1 className="text-blue-500 text-xl text-center p-4">Quick access</h1>
+            <h1 className="text-blue-500 text-xl text-center p-4">آخر الأنشطة</h1>
             </div>
           </div>
           
