@@ -33,6 +33,7 @@ import FolderCopyIcon from '@mui/icons-material/FolderCopy';
 import DownloadIcon from '@mui/icons-material/Download';
 import DeleteIcon from '@mui/icons-material/Delete';
 
+import codeDB from '../../data/data.json'
 interface Client {
   id : number ;
   nom: string;
@@ -65,6 +66,19 @@ const Show : React.FC<ShowProps> = (props : ShowProps) => {
     dossiers : props.dossiers,
     
   });
+
+  const getColorName = (c : string)=>{
+    
+     // Extract the 4 digits starting from the 4th position
+  const code = c.slice(3, 7);
+    for (const obj of codeDB) {
+      for (const court of obj.court) {
+        if (court.code.includes(Number(code))) {
+          return obj.color;
+        }
+      }
+    }
+  }  
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
@@ -124,7 +138,7 @@ const Show : React.FC<ShowProps> = (props : ShowProps) => {
                                           id={`panel${i}bh-header`}
                                         >
                                           <Typography sx={{ width: '33%', display : 'flex' , alignItems : 'center' , flexShrink: 0 }}>
-                                              <FolderIcon   style={{color : '#f87171'}} /> 
+                                              <FolderIcon   style={{color : `${getColorName(x.code)}`}} /> 
                                           <Typography sx={{padding : '0 12px' , color : '#334155'}}> {x.code} </Typography>
 
                                           </Typography>
