@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Models\Tache;
 
 class CalendarController extends Controller
 {
@@ -13,7 +14,15 @@ class CalendarController extends Controller
     public function index()
     {
         //
-        return Inertia::render('Calendar') ;
+       // $events = Tache::whereDate('echeance', today())->where('archived', false)->count();
+       $events = Tache::whereDate('echeance', today())
+       ->where('taches.archived', false)
+       ->join('dossiers', 'dossiers.id', '=', 'taches.dossier_id')
+       ->join('clients', 'clients.id', '=', 'dossiers.client_id')
+       ->select('taches.*', 'dossiers.code as dossier_code', 'clients.nom as client_nom')
+       ->get();
+        //return $events ;
+        return Inertia::render('Calendar' , ["events"=> $events] ) ;
     }
 
     /**
