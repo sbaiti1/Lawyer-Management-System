@@ -69,20 +69,14 @@ const MY: React.FC<Props> = (props : Props) => {
           </tr>
         </thead>
         <tbody className="text-gray-700">
-          <tr className="text-center">
-            <td className="w-1/5 text-left py-3 px-4">1</td>
-            <td className="w-1/5 text-left py-3 px-4">John Doe</td>
-            <td className="w-1/5 text-left py-3 px-4">johndoe@example.com</td>
-            <td className="w-1/5 text-left py-3 px-4">(123) 456-7890</td>
-            <td className="w-1/5 text-left py-3 px-4">Admin</td>
-          </tr>
+          
           {props.events.map((data) => (
   <tr className="text-center" key={data.dossier_code}>
     <td className="w-1/5 text-left py-3 px-4">{data.dossier_code}</td>
     <td className="w-1/5 text-left py-3 px-4">{data.client_nom}</td>
     <td className="w-1/5 text-left py-3 px-4">---</td>
     <td className="w-1/5 text-left py-3 px-4">{data.nom}</td>
-    <td className="w-1/5 text-left py-3 px-4">{getCourtName(data.dossier_code)}</td>
+    <td className="w-1/5 text-left py-3 px-4">محكمة  {getCourtName(data.dossier_code)} </td>
   </tr>
 ))}
         </tbody>
